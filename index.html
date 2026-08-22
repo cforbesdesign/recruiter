@@ -11,21 +11,15 @@
   </head>
   <body>
     <script>
-      // Set the theme before first paint so dark-mode visitors never see a light flash.
+      // Light is the default; dark is opt-in and applies only once the visitor
+      // has chosen it. Set pre-paint so returning dark users see no light flash.
       (function () {
         try {
-          var s = localStorage.getItem("cf-theme");
-          var t =
-            s === "light" || s === "dark"
-              ? s
-              : matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light";
-          document.documentElement.setAttribute("data-theme", t);
-          if (t === "dark") {
+          if (localStorage.getItem("cf-theme") === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
             document
               .querySelector('meta[name="theme-color"]')
-              .setAttribute("content", "#181818");
+              .setAttribute("content", "#282828");
           }
         } catch (e) {}
       })();
