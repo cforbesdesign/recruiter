@@ -4,7 +4,7 @@ const linkClass = "underline decoration-1 underline-offset-2 hover:text-accent";
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-[76px] bg-almost-white xs:scroll-mt-[104px]">
+    <section id="about" className="scroll-mt-20 bg-almost-white">
       <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
         <div className="flex flex-col gap-[27px] py-12 md:pt-10 md:pb-26">
           <h2 className="text-[30px] leading-[1.05] text-ink sm:text-[45px]">About</h2>
