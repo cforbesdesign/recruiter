@@ -85,6 +85,18 @@
   --color-hero-bg: var(--color-superblack);
 }
 
+/*
+ * Mobile OLED: true black so those pixels switch off entirely. Fully opaque
+ * on purpose — any alpha would composite against the page and lift it off
+ * zero, defeating the point. The frosted blur is traded away for that.
+ * Dark theme only; a black bar over the light page would just look broken.
+ */
+@media (max-width: 499.98px) {
+  [data-theme="dark"] {
+    --color-nav-bg: #000000;
+  }
+}
+
 :root {
   color-scheme: light;
 }
