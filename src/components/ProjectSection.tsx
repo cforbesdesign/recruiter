@@ -41,14 +41,14 @@ export function ProjectSection({ image, video, alt, name, headline, body }: Proj
       </div>
 
       <div className="flex flex-col gap-6 md:flex-row md:gap-12">
-        <h3 className="flex-1 text-[30px] leading-[1.05] text-ink md:text-[48px]">
+        <h3 className="flex-1 text-[30px] leading-[1.05] text-content md:text-[48px]">
           {name}
         </h3>
         <div className="flex-1">
-          <p className="text-[20px] leading-[1.15] text-ink md:text-[30px]">
+          <p className="text-[20px] leading-[1.15] text-content md:text-[30px]">
             {headline}
           </p>
-          <p className="mt-6 text-[16px] leading-[1.31] text-ink md:text-[20px]">
+          <p className="mt-6 text-[16px] leading-[1.31] text-content md:text-[20px]">
             {body}
           </p>
         </div>
@@ -125,8 +125,8 @@ export function ProjectNote({
 }) {
   return (
     <div className="md:w-1/2">
-      <p className="text-[20px] leading-[1.15] text-ink md:text-[30px]">{heading}</p>
-      <p className="mt-6 text-[16px] leading-[1.31] text-ink md:text-[20px]">
+      <p className="text-[20px] leading-[1.15] text-content md:text-[30px]">{heading}</p>
+      <p className="mt-6 text-[16px] leading-[1.31] text-content md:text-[20px]">
         {children}
       </p>
     </div>
@@ -155,7 +155,7 @@ function RowMedia({ img }: { img: RowImageItem }) {
       <div
         ref={ref}
         className={`w-full overflow-hidden rounded-2xl ${
-          img.bordered ? "border border-[#d3d3d3]" : ""
+          img.bordered ? "border border-line" : ""
         } ${img.padded ? "flex items-center justify-center" : ""} ${reveal(inView)}`}
         style={{ aspectRatio: img.aspect ?? "1/1", backgroundColor: img.padded ? img.background : undefined }}
       >
@@ -180,7 +180,7 @@ function RowMedia({ img }: { img: RowImageItem }) {
         )}
       </div>
       {img.caption && (
-        <figcaption className="mt-4 text-center text-[16px] font-bold text-[#a7a7af]">
+        <figcaption className="mt-4 text-center text-[16px] font-bold text-content-subtle">
           {img.caption}
         </figcaption>
       )}

@@ -21,7 +21,7 @@ const FIELDS = [
 ] as const;
 
 const inputClass =
-  "w-full border-0 border-b border-[#d8d8d8] bg-transparent py-4 text-[20px] text-ink outline-none transition-colors duration-300 ease-out placeholder:text-[#9a9a9a] focus:border-accent";
+  "w-full border-0 border-b border-line bg-transparent py-4 text-[20px] text-content outline-none transition-colors duration-300 ease-out placeholder:text-content-subtle focus:border-accent";
 
 export function Contact() {
   const [values, setValues] = useState<Fields>(EMPTY);
@@ -63,7 +63,7 @@ export function Contact() {
   };
 
   return (
-    <section className="flex min-h-[100svh] flex-col bg-almost-white md:flex-row">
+    <section className="flex min-h-[100svh] flex-col bg-page md:flex-row">
       {/* Left — photo with headline */}
       <div className="relative min-h-[420px] flex-1 overflow-hidden md:min-h-0 md:basis-[55%]">
         <img
@@ -71,8 +71,8 @@ export function Contact() {
           alt="Apollo-era mission control room during a launch countdown"
           className="absolute inset-0 h-full w-full object-cover grayscale"
         />
-        <div className="absolute inset-0 bg-ink/25" />
-        <h1 className="absolute inset-0 z-10 flex flex-col justify-center px-6 text-[64px] leading-[0.95] tracking-tight text-almost-white xs:px-12 sm:text-[88px] md:px-20 lg:text-[112px] xl:text-[128px]">
+        <div className="absolute inset-0 bg-black-1/40" />
+        <h1 className="absolute inset-0 z-10 flex flex-col justify-center px-6 text-[64px] leading-[0.95] tracking-tight text-on-inverse xs:px-12 sm:text-[88px] md:px-20 lg:text-[112px] xl:text-[128px]">
           Make
           <span className="text-accent">contact</span>
         </h1>
@@ -80,7 +80,7 @@ export function Contact() {
 
       {/* Right — form card */}
       <div className="flex flex-1 items-center px-6 pt-28 pb-16 xs:px-12 md:basis-[45%] md:px-12 md:py-28 xl:px-20">
-        <div className="w-full rounded-3xl bg-white px-6 py-10 xs:px-10 xs:py-12 md:px-12">
+        <div className="w-full rounded-3xl bg-surface px-6 py-10 xs:px-10 xs:py-12 md:px-12">
           <form onSubmit={onSubmit} noValidate>
             {FIELDS.map(({ key, label, type, autoComplete }) => (
               <div key={key} className="mb-2">
@@ -141,7 +141,7 @@ export function Contact() {
               <label
                 htmlFor="consent"
                 className={`mt-[3px] flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-md border-[1.5px] transition-colors duration-300 ease-out peer-checked:border-accent peer-checked:bg-accent peer-focus-visible:ring-2 peer-focus-visible:ring-accent/40 ${
-                  errors.consent ? "border-accent" : "border-[#c9c9c9]"
+                  errors.consent ? "border-accent" : "border-line"
                 }`}
               >
                 <svg
@@ -164,7 +164,7 @@ export function Contact() {
               <div>
                 <label
                   htmlFor="consent"
-                  className="cursor-pointer text-[16px] leading-[1.4] text-ink"
+                  className="cursor-pointer text-[16px] leading-[1.4] text-content"
                 >
                   I have read the information on the processing of my personal
                   data for the purpose of responding to my enquiry. Details in
@@ -192,7 +192,7 @@ export function Contact() {
           {sent && (
             <div
               role="status"
-              className="mt-8 rounded-full border border-[#2f9e5f] px-6 py-4 text-[16px] text-ink"
+              className="mt-8 rounded-full border border-success px-6 py-4 text-[16px] text-content"
             >
               Thank you for your message. It has been sent.
             </div>
@@ -211,10 +211,10 @@ function SendButton() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        backgroundColor: hovered ? "#EC4E33" : "#282828",
-        transition: "background-color 300ms ease",
+        backgroundColor: hovered ? "var(--color-accent)" : "var(--color-cta-bg)",
+        transition: "background-color 300ms ease, color 300ms ease",
         borderRadius: 9999,
-        color: "#f5f5f5",
+        color: hovered ? "var(--color-almost-white)" : "var(--color-cta-fg)",
         fontSize: 16,
         fontWeight: 600,
         letterSpacing: "0.2px",

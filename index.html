@@ -10,6 +10,26 @@
     <title>Craig Forbes — Design Lead</title>
   </head>
   <body>
+    <script>
+      // Set the theme before first paint so dark-mode visitors never see a light flash.
+      (function () {
+        try {
+          var s = localStorage.getItem("cf-theme");
+          var t =
+            s === "light" || s === "dark"
+              ? s
+              : matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.setAttribute("data-theme", t);
+          if (t === "dark") {
+            document
+              .querySelector('meta[name="theme-color"]')
+              .setAttribute("content", "#181818");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

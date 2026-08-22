@@ -7,11 +7,82 @@
   --breakpoint-lg: 1280px;
   --breakpoint-xl: 1440px;
 
+  /* --- Palette (Figma: Portfolio 2026 / Color & Typography) --- */
+  --color-white-1: #ffffff;
   --color-almost-white: #f5f5f5;
-  --color-ink: #282828;
-  --color-accent: #ec4e33;
+  --color-grey-1: #e0e0e0;
+  --color-grey-2: #4e4e4e;
+  --color-black-1: #282828;
+  --color-superblack: #181818;
+  --color-orange-base: #ec4e33;
+  --color-orange-dark: #c6422c;
+  --color-blue-1: #5083c1;
+  --color-blue-2: #3d6596;
+
+  /* --- Semantic tokens (light values; overridden under [data-theme="dark"]) --- */
+  --color-page: var(--color-almost-white);
+  --color-surface: var(--color-white-1);
+  --color-inverse: var(--color-black-1);
+
+  --color-content: var(--color-black-1);
+  --color-content-muted: var(--color-grey-2);
+  --color-content-subtle: #9a9a9a;
+  --color-on-inverse: var(--color-almost-white);
+
+  --color-line: var(--color-grey-1);
+  --color-rule: var(--color-black-1);
+  --color-divider: rgb(255 255 255 / 0.2);
+
+  --color-accent: var(--color-orange-base);
+  --color-accent-hover: var(--color-orange-dark);
+  --color-success: #2f9e5f;
+  --color-status: #22c55e;
+
+  --color-nav-bg: rgb(237 237 237 / 0.64);
+
+  /* Pill CTA (nav + contact Send). Inverts so it stays prominent in both themes;
+     on hover both themes go to accent with light text. */
+  --color-cta-bg: rgb(20 20 20);
+  --color-cta-fg: var(--color-almost-white);
+
+  /* Hero copy overlaps the video at wide viewports; in dark mode it gets a
+     Superblack backing so it stays readable. Transparent in light. */
+  --color-hero-bg: transparent;
 
   --font-sans: "neue-haas-grotesk-display", system-ui, sans-serif;
+}
+
+/*
+ * Dark theme. Only the semantic tokens flip — the palette above is fixed, and
+ * every utility in the app reads through these, so no `dark:` variants are
+ * needed in markup. Accent stays Orange Base in both themes by design.
+ */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Black 1 Base stands in for Almost White as the page ground. The footer is
+     the same value, so it reads seamlessly rather than as a dark block. */
+  --color-page: var(--color-black-1);
+  --color-surface: var(--color-superblack);
+  --color-inverse: var(--color-black-1);
+
+  --color-content: var(--color-almost-white);
+  --color-content-muted: var(--color-grey-1);
+  --color-content-subtle: #8a8a8a;
+  --color-on-inverse: var(--color-almost-white);
+
+  --color-line: var(--color-grey-2);
+  --color-rule: var(--color-grey-2);
+  --color-divider: rgb(255 255 255 / 0.14);
+
+  --color-success: #4ade80;
+
+  --color-nav-bg: rgb(40 40 40 / 0.72);
+
+  --color-cta-bg: var(--color-almost-white);
+  --color-cta-fg: var(--color-black-1);
+
+  --color-hero-bg: var(--color-superblack);
 }
 
 :root {
@@ -25,7 +96,9 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background-color: var(--color-almost-white);
+  background-color: var(--color-page);
+  color: var(--color-content);
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 @keyframes status-pulse {

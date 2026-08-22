@@ -25,7 +25,7 @@ function LogoIcon() {
         width="48"
         height="48"
         mask="url(#logo-cutout)"
-        style={{ fill: hovered ? "#EC4E33" : "#282828", transition: "fill 300ms ease" }}
+        style={{ fill: hovered ? "var(--color-accent)" : "var(--color-content)", transition: "fill 300ms ease" }}
       />
     </svg>
   );
@@ -39,8 +39,11 @@ function ContactCTA({ style, className, onClick }: { style?: React.CSSProperties
       className={className}
       style={{
         ...style,
-        backgroundColor: hovered ? "#EC4E33" : "rgb(20, 20, 20)",
-        transition: "background-color 300ms ease",
+        backgroundColor: hovered ? "var(--color-accent)" : "var(--color-cta-bg)",
+        // Accent is light-on-orange in both themes, so override the dark-mode
+        // dark label while hovered.
+        color: hovered ? "var(--color-almost-white)" : "var(--color-cta-fg)",
+        transition: "background-color 300ms ease, color 300ms ease",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -69,7 +72,7 @@ function NavLink({ href, external, children }: { href: string; external?: boolea
         fontWeight: 600,
         letterSpacing: "0.2px",
         lineHeight: "22px",
-        color: hovered ? "#EC4E33" : "rgb(20, 20, 20)",
+        color: hovered ? "var(--color-accent)" : "var(--color-cta-bg)",
         textDecoration: "none",
         transition: "color 300ms ease",
       }}
@@ -92,7 +95,7 @@ function HamburgerIcon({ open }: { open: boolean }) {
     width: 18,
     height: 2,
     left: 3,
-    backgroundColor: "#141414",
+    backgroundColor: "var(--color-content)",
     borderRadius: 999,
     transformOrigin: "center center",
     transition: "top 0.3s ease, transform 0.3s ease",
@@ -108,7 +111,7 @@ function HamburgerIcon({ open }: { open: boolean }) {
 const NAV_STYLE: React.CSSProperties = {
   backdropFilter: "blur(48px)",
   WebkitBackdropFilter: "blur(48px)",
-  backgroundColor: "rgba(237, 237, 237, 0.64)",
+  backgroundColor: "var(--color-nav-bg)",
   borderRadius: 36,
 };
 
@@ -162,7 +165,7 @@ export function Nav() {
                       fontSize: 16,
                       fontWeight: 600,
                       letterSpacing: "0.2px",
-                      color: "#f5f5f5",
+                      color: "var(--color-cta-fg)",
                       textDecoration: "none",
                       borderRadius: 9999,
                       padding: "8px 20px",
@@ -220,7 +223,7 @@ export function Nav() {
                   fontWeight: 600,
                   letterSpacing: "0.2px",
                   lineHeight: "22px",
-                  color: "rgb(20, 20, 20)",
+                  color: "var(--color-content)",
                   textDecoration: "none",
                   transitionDelay: open ? `${index * 50 + 50}ms` : "0ms",
                 }}
@@ -237,7 +240,7 @@ export function Nav() {
             className="block w-full text-center"
             style={{
               fontFamily: '"neue-haas-grotesk-display", sans-serif',
-              color: "#f5f5f5",
+              color: "var(--color-cta-fg)",
               borderRadius: 9999,
               padding: "12px 0",
               fontSize: 16,

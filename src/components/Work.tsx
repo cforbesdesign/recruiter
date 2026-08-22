@@ -44,13 +44,13 @@ const linkClass = "underline decoration-1 underline-offset-2 hover:text-accent";
 
 export function Work() {
   return (
-    <section id="work" className="scroll-mt-20 bg-almost-white">
+    <section id="work" className="scroll-mt-20 bg-page">
       <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
         <div className="flex flex-col gap-[27px] py-12 md:pt-0 md:pb-[136px]">
-          <h2 className="text-[30px] leading-[1.05] text-ink sm:text-[45px]">
+          <h2 className="text-[30px] leading-[1.05] text-content sm:text-[45px]">
             Featured Work
           </h2>
-          <div className="h-px w-full bg-ink" />
+          <div className="h-px w-full bg-inverse" />
         </div>
 
         <div className="flex flex-col gap-12 pb-12 md:gap-26 md:pb-26">
@@ -138,7 +138,7 @@ export function Work() {
             and more.
           </ProjectNote>
 
-          <div className="h-px w-full bg-ink" />
+          <div className="h-px w-full bg-inverse" />
 
           <ProjectSection
             image={bertolliRecipe}
@@ -165,7 +165,7 @@ export function Work() {
             ]}
           />
 
-          <div className="h-px w-full bg-ink" />
+          <div className="h-px w-full bg-inverse" />
 
           <ProjectSection
             image={bmagHero}
@@ -230,7 +230,7 @@ export function Work() {
             ]}
           />
 
-          <div className="h-px w-full bg-ink" />
+          <div className="h-px w-full bg-inverse" />
 
           <ProjectSection
             image={xfinityMobile}
@@ -260,18 +260,18 @@ export function Work() {
             ]}
           />
 
-          <div className="h-px w-full bg-ink" />
+          <div className="h-px w-full bg-inverse" />
 
           <div className="flex flex-col gap-6 md:flex-row md:gap-12">
-            <h3 className="flex-1 text-[30px] leading-[1.05] text-ink md:text-[48px]">
+            <h3 className="flex-1 text-[30px] leading-[1.05] text-content md:text-[48px]">
               Google.org
             </h3>
             <div className="flex-1">
-              <p className="text-[20px] leading-[1.15] text-ink md:text-[30px]">
+              <p className="text-[20px] leading-[1.15] text-content md:text-[30px]">
                 Unifying resources and support across Google&rsquo;s philanthropic
                 network
               </p>
-              <p className="mt-6 text-[16px] leading-[1.31] text-ink md:text-[20px]">
+              <p className="mt-6 text-[16px] leading-[1.31] text-content md:text-[20px]">
                 During my time at Huge, we were tasked with designing a{" "}
                 <a
                   href="https://www.figma.com/design/FrWnPIqmwWcv3nMAsYu067/Google-dot-org-Resource-Platform--O.N.-Walkthrough-?node-id=4025-268084&t=nPBTRiFIScp5QKvx-1"
@@ -306,7 +306,7 @@ export function Work() {
                 alt="Google.org personalized dashboard interface"
                 aspect="1352/846"
               />
-              <figcaption className="mt-4 text-center text-[16px] font-semibold text-[#b7b3b3] md:text-[20px]">
+              <figcaption className="mt-4 text-center text-[16px] font-semibold text-content-subtle md:text-[20px]">
                 Wireframe stages
               </figcaption>
             </figure>
