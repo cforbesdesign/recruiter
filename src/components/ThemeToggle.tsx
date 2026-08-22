@@ -23,16 +23,17 @@ export function ThemeToggle({
       onMouseLeave={() => setHovered(false)}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="fixed right-6 bottom-6 z-50 flex size-12 items-center justify-center rounded-full md:right-8 md:bottom-8"
+      className="fixed right-[34px] bottom-6 z-50 flex size-12 items-center justify-center rounded-full md:right-8 md:bottom-8"
       style={{
-        // cta-bg inverts per theme, so the button stays visible against the
-        // page in both (--color-inverse would vanish on the dark ground).
-        backgroundColor: hovered ? "var(--color-accent)" : "var(--color-cta-bg)",
-        color: hovered ? "var(--color-almost-white)" : "var(--color-cta-fg)",
+        // Same frosted treatment as the nav so the control recedes into the
+        // page rather than competing with it.
+        backgroundColor: "var(--color-nav-bg)",
+        backdropFilter: "blur(48px)",
+        WebkitBackdropFilter: "blur(48px)",
+        color: "var(--color-content)",
         border: "none",
         cursor: "pointer",
-        boxShadow: "0 4px 16px rgb(0 0 0 / 0.18)",
-        transition: "background-color 300ms ease, transform 300ms ease",
+        transition: "transform 300ms ease",
         transform: hovered ? "scale(1.06)" : "scale(1)",
       }}
     >
