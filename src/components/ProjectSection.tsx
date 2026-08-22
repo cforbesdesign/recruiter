@@ -191,7 +191,7 @@ function RowMedia({ img }: { img: RowImageItem }) {
 /** Row of equal-width images (or videos); each defaults to a square crop. */
 export function ProjectImageRow({ images }: { images: RowImageItem[] }) {
   return (
-    <div className="flex flex-col gap-12 sm:flex-row">
+    <div className="flex flex-col gap-6 sm:flex-row">
       {images.map((img) => (
         <RowMedia key={img.src} img={img} />
       ))}

@@ -44,7 +44,7 @@ const linkClass = "underline decoration-1 underline-offset-2 hover:text-accent";
 
 export function Work() {
   return (
-    <section id="work" className="scroll-mt-[76px] bg-almost-white xs:scroll-mt-[104px]">
+    <section id="work" className="scroll-mt-20 bg-almost-white">
       <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
         <div className="flex flex-col gap-[27px] py-12 md:pt-0 md:pb-[136px]">
           <h2 className="text-[30px] leading-[1.05] text-ink sm:text-[45px]">
@@ -63,41 +63,40 @@ export function Work() {
             body="As part of the team at Havas, I worked with Fitbit to elevate their digital presence across e-commerce, app experiences, and CRM. On the web store, we updated navigation tiles and reduced cognitive load in the site hierarchy, while crafting animated marquee heroes for the homepage. We also created visual assets for the Fitbit Premium app and designed a modular email design system for Fitbit’s Premium subscriber marketing. Built to streamline the creative process while maintaining a consistent, high-quality visual language, this email framework allowed for rapid ideation, design, and deployment—giving cross-functional teams a shared system to efficiently launch consumer campaigns."
           />
 
-          <ProjectVideo
-            video={fitbitHomepageVideo}
-            poster={fitbitHomepage}
-            aspect="1352/862"
-          />
-
-          <ProjectImage
-            image={fitbitMarquee}
-            alt="Fitbit animated marquee hero design"
-          />
-
-          <ProjectImage
-            image={fitbitBom1}
-            alt="Fitbit campaign visual design"
-            aspect="1352/761"
-          />
-          <ProjectImage
-            image={fitbitBom2}
-            alt="Fitbit campaign visual design, alternate layout"
-            aspect="1352/761"
-          />
-
-          <ProjectImage
-            image={fitbitMarquee2}
-            alt="Fitbit marquee hero variation"
-          />
-          <ProjectImage
-            image={fitbitModules}
-            alt="Fitbit modular email design system components"
-          />
-          <ProjectImage
-            image={fitbitMarquee3}
-            alt="Fitbit marquee hero variation"
-          />
-          <ProjectImage image={fitbit4} alt="Fitbit product design detail" />
+          <div className="flex flex-col gap-6 md:gap-26">
+            <ProjectVideo
+              video={fitbitHomepageVideo}
+              poster={fitbitHomepage}
+              aspect="1352/862"
+            />
+            <ProjectImage
+              image={fitbitMarquee}
+              alt="Fitbit animated marquee hero design"
+            />
+            <ProjectImage
+              image={fitbitBom1}
+              alt="Fitbit campaign visual design"
+              aspect="1352/761"
+            />
+            <ProjectImage
+              image={fitbitBom2}
+              alt="Fitbit campaign visual design, alternate layout"
+              aspect="1352/761"
+            />
+            <ProjectImage
+              image={fitbitMarquee2}
+              alt="Fitbit marquee hero variation"
+            />
+            <ProjectImage
+              image={fitbitModules}
+              alt="Fitbit modular email design system components"
+            />
+            <ProjectImage
+              image={fitbitMarquee3}
+              alt="Fitbit marquee hero variation"
+            />
+            <ProjectImage image={fitbit4} alt="Fitbit product design detail" />
+          </div>
 
           <ProjectNote heading="Lightspeed">
             The email design system emphasized accessibility and innovation,
@@ -176,14 +175,16 @@ export function Work() {
             body="Baltimore Magazine’s digital audience was growing rapidly, but the site was struggling to keep up. It still featured some non-responsive pages and had limited space for paid advertising and sponsorships, a good problem to have, but one that needed solving. My role was to help modernize the experience. I focused on enhancing immersive visuals, leveraging rich photography and illustration, while increasing ad space in a way that felt natural and unobtrusive. The site was designed in Sketch and built using Zurb Foundation and Craft CMS. I contributed to both the design and front-end development."
           />
 
-          <ProjectImage
-            image={bmagTemplates1}
-            alt="Baltimore magazine template design"
-          />
-          <ProjectImage
-            image={bmagTemplates2}
-            alt="Baltimore magazine template design, alternate layout"
-          />
+          <div className="flex flex-col gap-6 md:gap-26">
+            <ProjectImage
+              image={bmagTemplates1}
+              alt="Baltimore magazine template design"
+            />
+            <ProjectImage
+              image={bmagTemplates2}
+              alt="Baltimore magazine template design, alternate layout"
+            />
+          </div>
 
           <ProjectNote heading="Do your thing">
             We developed a flexible system of templates: some were blog-style
@@ -293,22 +294,23 @@ export function Work() {
             </div>
           </div>
 
-          <ProjectImage
-            image={googleorgWorkspace}
-            alt="Google Workspace for Nonprofits account management dashboard"
-            aspect="1352/833"
-          />
-
-          <figure>
+          <div className="flex flex-col gap-6 md:gap-26">
             <ProjectImage
-              image={googleorgDashboard}
-              alt="Google.org personalized dashboard interface"
-              aspect="1352/846"
+              image={googleorgWorkspace}
+              alt="Google Workspace for Nonprofits account management dashboard"
+              aspect="1352/833"
             />
-            <figcaption className="mt-4 text-center text-[16px] font-semibold text-[#b7b3b3] md:text-[20px]">
-              Wireframe stages
-            </figcaption>
-          </figure>
+            <figure>
+              <ProjectImage
+                image={googleorgDashboard}
+                alt="Google.org personalized dashboard interface"
+                aspect="1352/846"
+              />
+              <figcaption className="mt-4 text-center text-[16px] font-semibold text-[#b7b3b3] md:text-[20px]">
+                Wireframe stages
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>

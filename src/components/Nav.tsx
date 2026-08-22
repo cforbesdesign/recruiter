@@ -1,121 +1,252 @@
-import { useEffect, useRef, useState } from "react";
-import logo from "../assets/icons/logo.svg";
-import menuIcon from "../assets/icons/menu.svg";
-import closeIcon from "../assets/icons/close.svg";
+import { useState, useEffect, useRef } from "react";
+import { handleNavClick } from "../hooks/useRoute";
+
+function LogoIcon() {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="rounded-full block"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <defs>
+        <mask id="logo-cutout">
+          <rect width="48" height="48" fill="white" />
+          <path d="M28.8889 22.3056V19.1094H13V34.9983H28.8889V31.802H16.1921V22.3046L28.8889 22.3056Z" fill="black" />
+          <path d="M34.9794 13H13V16.161H31.8395V25.5702H19.2798V28.7341H31.8395V35H35V13H34.9794Z" fill="black" />
+        </mask>
+      </defs>
+      <rect
+        width="48"
+        height="48"
+        mask="url(#logo-cutout)"
+        style={{ fill: hovered ? "#EC4E33" : "#282828", transition: "fill 300ms ease" }}
+      />
+    </svg>
+  );
+}
+
+function ContactCTA({ style, className, onClick }: { style?: React.CSSProperties; className?: string; onClick?: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href="/contact"
+      className={className}
+      style={{
+        ...style,
+        backgroundColor: hovered ? "#EC4E33" : "rgb(20, 20, 20)",
+        transition: "background-color 300ms ease",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={(e) => {
+        handleNavClick("/contact")(e);
+        onClick?.();
+      }}
+    >
+      Make Contact
+    </a>
+  );
+}
+
+function NavLink({ href, external, children }: { href: string; external?: boolean; children: React.ReactNode }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        fontFamily: '"neue-haas-grotesk-display", sans-serif',
+        fontSize: 16,
+        fontWeight: 600,
+        letterSpacing: "0.2px",
+        lineHeight: "22px",
+        color: hovered ? "#EC4E33" : "rgb(20, 20, 20)",
+        textDecoration: "none",
+        transition: "color 300ms ease",
+      }}
+    >
+      {children}
+    </a>
+  );
+}
 
 const links = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
   { label: "LinkedIn", href: "https://linkedin.com/in/craig-forbes-8769331b", external: true },
+  { label: "Make Contact", href: "/contact", external: false },
 ];
+
+function HamburgerIcon({ open }: { open: boolean }) {
+  const barBase: React.CSSProperties = {
+    position: "absolute",
+    width: 18,
+    height: 2,
+    left: 3,
+    backgroundColor: "#141414",
+    borderRadius: 999,
+    transformOrigin: "center center",
+    transition: "top 0.3s ease, transform 0.3s ease",
+  };
+  return (
+    <span style={{ position: "relative", display: "block", width: 24, height: 24 }}>
+      <span style={{ ...barBase, top: open ? 11 : 7, transform: open ? "rotate(45deg)" : "none" }} />
+      <span style={{ ...barBase, top: open ? 11 : 15, transform: open ? "rotate(-45deg)" : "none" }} />
+    </span>
+  );
+}
+
+const NAV_STYLE: React.CSSProperties = {
+  backdropFilter: "blur(48px)",
+  WebkitBackdropFilter: "blur(48px)",
+  backgroundColor: "rgba(237, 237, 237, 0.64)",
+  borderRadius: 36,
+};
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", open ? "#282828" : "#f5f5f5");
-  }, [open]);
-
-  useEffect(() => {
-    lastScrollY.current = window.scrollY;
-
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      const scrollingDown = currentY > lastScrollY.current;
-      setHidden(scrollingDown && currentY > 96);
-      lastScrollY.current = currentY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > lastScrollY.current && y > 80) {
+        setNavHidden(true);
+        setOpen(false);
+      } else {
+        setNavHidden(false);
+      }
+      lastScrollY.current = y;
     };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <nav
-      className={`sticky top-0 z-40 transition-transform duration-300 ease-in-out ${
-        hidden ? "xs:-translate-y-full" : "translate-y-0"
-      }`}
+      className="fixed top-4 left-1/2 z-40 w-[calc(100%-48px)] max-w-[1512px] sm:w-[calc(100%-96px)] xl:w-[calc(100%-160px)] overflow-hidden"
+      style={{
+        ...NAV_STYLE,
+        transform: navHidden ? "translate(-50%, calc(-100% - 2rem))" : "translate(-50%, 0)",
+        transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+      }}
     >
+      {/* Top row — logo left, links/hamburger right. Never moves. */}
       <div
-        className={`relative z-30 mx-auto flex h-[76px] max-w-[1512px] items-center justify-between px-6 backdrop-blur-sm transition-colors duration-300 ease-in-out xs:h-[104px] xs:px-12 md:px-20 ${
-          open ? "bg-transparent" : "bg-almost-white/90"
-        }`}
+        className="flex items-center justify-between p-4 xs:p-2"
       >
-        <a href="/" className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded">
-          <img src={logo} alt="Craig Forbes" className="size-9 rounded xs:size-full" />
+        <a href="/" onClick={handleNavClick("/")} className="flex items-center">
+          <LogoIcon />
         </a>
 
-        <ul className="hidden items-center gap-6 xs:flex md:gap-12">
-          {links.map(({ label, href, external }) => (
-            <li key={label} className="group flex flex-col items-start">
+        {/* Desktop links */}
+        <ul className="hidden items-center gap-6 xs:flex">
+          {links.map(({ label, href, external }) => {
+            const isCta = label === "Make Contact";
+            return (
+              <li key={label}>
+                {isCta ? (
+                  <ContactCTA
+                    style={{
+                      fontFamily: '"neue-haas-grotesk-display", sans-serif',
+                      fontSize: 16,
+                      fontWeight: 600,
+                      letterSpacing: "0.2px",
+                      color: "#f5f5f5",
+                      textDecoration: "none",
+                      borderRadius: 9999,
+                      padding: "8px 20px",
+                      display: "inline-block",
+                    }}
+                  />
+                ) : (
+                  <NavLink href={href} external={external}>
+                    {label}
+                  </NavLink>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          className="flex items-center justify-center xs:hidden"
+          style={{ width: 24, height: 24, background: "none", border: "none", padding: 0, cursor: "pointer" }}
+        >
+          <HamburgerIcon open={open} />
+        </button>
+      </div>
+
+      {/* Mobile expandable links */}
+      <div
+        className="xs:hidden overflow-hidden"
+        style={{
+          maxHeight: open ? 400 : 0,
+          transition: "max-height 0.35s ease-in-out",
+        }}
+      >
+        {/* Gap between top row and links matches Mobbin's gap:20px */}
+        <ul
+          className="flex flex-col"
+          style={{ padding: "8px 20px 20px", gap: 16 }}
+        >
+          {links.slice(0, -1).map(({ label, href, external }, index) => (
+            <li key={label}>
               <a
                 href={href}
                 target={external ? "_blank" : undefined}
                 rel={external ? "noreferrer" : undefined}
-                className="text-[25px] text-ink"
+                className={`block transition-all duration-300 ease-out ${
+                  open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+                }`}
+                style={{
+                  fontFamily: '"neue-haas-grotesk-display", sans-serif',
+                  fontSize: 16,
+                  fontWeight: 600,
+                  letterSpacing: "0.2px",
+                  lineHeight: "22px",
+                  color: "rgb(20, 20, 20)",
+                  textDecoration: "none",
+                  transitionDelay: open ? `${index * 50 + 50}ms` : "0ms",
+                }}
+                onClick={() => setOpen(false)}
               >
                 {label}
               </a>
-              <span className="h-1 w-0 bg-accent transition-all duration-200 group-hover:w-full" />
             </li>
           ))}
         </ul>
 
-        <button
-          type="button"
-          onClick={() => setOpen((value) => !value)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          className="relative flex size-12 shrink-0 items-center justify-center rounded-full xs:hidden"
-        >
-          <span className="relative block h-[15px] w-[18px]">
-            <img
-              src={menuIcon}
-              alt=""
-              className={`absolute inset-0 m-auto h-[9px] w-[18px] transition-all duration-300 ease-out ${
-                open ? "rotate-45 opacity-0" : "rotate-0 opacity-100"
-              }`}
-            />
-            <img
-              src={closeIcon}
-              alt=""
-              className={`absolute inset-0 m-auto h-[15px] w-[16px] transition-all duration-300 ease-out ${
-                open ? "rotate-0 opacity-100" : "-rotate-45 opacity-0"
-              }`}
-            />
-          </span>
-        </button>
-      </div>
-
-      <div
-        className={`absolute inset-x-0 top-0 z-20 overflow-hidden rounded-b-[40px] bg-ink shadow-[0px_4px_3.5px_rgba(40,40,40,0.25)] transition-[clip-path] duration-300 ease-in-out xs:hidden ${
-          open ? "[clip-path:inset(0_0_0%_0)]" : "[clip-path:inset(0_0_100%_0)]"
-        }`}
-      >
-        <div className="h-[76px]" />
-        <div className="flex h-[calc(75vh-76px)] items-center justify-center">
-          <ul className="flex flex-col items-center gap-4">
-            {links.map(({ label, href, external }, index) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noreferrer" : undefined}
-                  className={`block text-[25px] text-almost-white transition-all duration-300 ease-out ${
-                    open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-                  }`}
-                  style={{ transitionDelay: open ? `${index * 80}ms` : "0ms" }}
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <div style={{ padding: "0 13px 13px" }}>
+          <ContactCTA
+            className="block w-full text-center"
+            style={{
+              fontFamily: '"neue-haas-grotesk-display", sans-serif',
+              color: "#f5f5f5",
+              borderRadius: 9999,
+              padding: "12px 0",
+              fontSize: 16,
+              fontWeight: 600,
+              letterSpacing: "0.2px",
+              textDecoration: "none",
+            }}
+            onClick={() => setOpen(false)}
+          />
         </div>
       </div>
     </nav>

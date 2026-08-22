@@ -1,6 +1,8 @@
+import { handleNavClick } from "../hooks/useRoute";
+
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/craig-forbes-8769331b" },
-  { label: "Behance", href: "https://behance.net" },
+  { label: "Behance", href: "https://www.behance.net/cforbesdesc5fc" },
 ];
 
 export function Footer() {
@@ -29,7 +31,8 @@ export function Footer() {
 
         <div className="flex flex-wrap items-start gap-5 min-[500px]:flex-nowrap min-[500px]:items-center">
           <a
-            href="mailto:cforbesdesign@gmail.com"
+            href="/contact"
+            onClick={handleNavClick("/contact")}
             className="flex h-12 shrink-0 items-center justify-center rounded-full border-[1.5px] border-almost-white bg-ink px-6 text-[16px] text-almost-white transition-colors duration-300 hover:bg-almost-white hover:text-ink min-[500px]:h-[45px]"
           >
             Make Contact
