@@ -23,7 +23,7 @@ export function ThemeToggle({
       onMouseLeave={() => setHovered(false)}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="fixed right-[34px] bottom-6 z-50 flex size-12 items-center justify-center rounded-full md:right-8 md:bottom-8"
+      className="fixed right-[34px] bottom-0 z-50 flex size-12 items-center justify-center rounded-full md:right-8 md:bottom-8"
       style={{
         // Same frosted treatment as the nav so the control recedes into the
         // page rather than competing with it.
