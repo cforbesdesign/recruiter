@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 import { useInView } from "../hooks/useInView";
 
@@ -18,6 +19,11 @@ type ProjectSectionProps = {
 /** Project intro: full-width hero image (or video), then project name beside headline + body. */
 export function ProjectSection({ image, video, alt, name, headline, body }: ProjectSectionProps) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (inView) videoRef.current?.play();
+  }, [inView]);
 
   return (
     <div className="flex flex-col gap-12 md:gap-26">
@@ -27,9 +33,9 @@ export function ProjectSection({ image, video, alt, name, headline, body }: Proj
       >
         {video ? (
           <video
+            ref={videoRef}
             src={video}
             poster={image}
-            autoPlay
             loop
             muted
             playsInline
@@ -88,9 +94,56 @@ export function ProjectVideo({
   poster,
   aspect = "1352/845",
   rounded = true,
+  caption,
 }: {
   video: string;
   poster?: string;
+  aspect?: string;
+  rounded?: boolean;
+  caption?: string;
+}) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (inView) videoRef.current?.play();
+  }, [inView]);
+
+  return (
+    <figure>
+      <div
+        ref={ref}
+        className={`w-full overflow-hidden ${rounded ? "rounded-2xl" : ""} ${reveal(inView)}`}
+        style={{ aspectRatio: aspect }}
+      >
+        <video
+          ref={videoRef}
+          src={video}
+          poster={poster}
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+        />
+      </div>
+      {caption && (
+        <figcaption className="mt-4 text-center text-[16px] font-bold text-[#a7a7af]">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+/** Full-bleed third-party video embed (e.g. Vimeo) within a project. */
+export function ProjectEmbed({
+  src,
+  title,
+  aspect = "16/9",
+  rounded = true,
+}: {
+  src: string;
+  title: string;
   aspect?: string;
   rounded?: boolean;
 }) {
@@ -102,14 +155,13 @@ export function ProjectVideo({
       className={`w-full overflow-hidden ${rounded ? "rounded-2xl" : ""} ${reveal(inView)}`}
       style={{ aspectRatio: aspect }}
     >
-      <video
-        src={video}
-        poster={poster}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="h-full w-full object-cover"
+      <iframe
+        src={src}
+        title={title}
+        className="h-full w-full"
+        frameBorder={0}
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        allowFullScreen
       />
     </div>
   );
@@ -149,6 +201,11 @@ type RowImageItem = {
 /** One media block within a ProjectImageRow; animates in on its own once visible. */
 function RowMedia({ img }: { img: RowImageItem }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (inView) videoRef.current?.play();
+  }, [inView]);
 
   return (
     <figure className="flex-1">
@@ -161,9 +218,9 @@ function RowMedia({ img }: { img: RowImageItem }) {
       >
         {img.video ? (
           <video
+            ref={videoRef}
             src={img.video}
             poster={img.src}
-            autoPlay
             loop
             muted
             playsInline

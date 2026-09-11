@@ -10,6 +10,7 @@
   --color-almost-white: #f5f5f5;
   --color-ink: #282828;
   --color-accent: #ec4e33;
+  --color-grey-1: #e0e0e0;
 
   --font-sans: "neue-haas-grotesk-display", system-ui, sans-serif;
 }
@@ -57,4 +58,22 @@ body {
 
 .animate-status-pulse {
   animation: status-pulse 2s infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes carousel-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }

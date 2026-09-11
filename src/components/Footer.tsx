@@ -1,5 +1,3 @@
-import { handleNavClick } from "../hooks/useRoute";
-
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/craig-forbes-8769331b" },
   { label: "Behance", href: "https://www.behance.net/cforbesdesc5fc" },
@@ -25,21 +23,21 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="text-[45px] leading-[1.05] text-almost-white min-[500px]:max-w-[825px] min-[500px]:text-[48px] min-[1200px]:max-w-none min-[1200px]:text-[56px]">
-          Let&rsquo;s chart your next course together.
+        <p className="text-[45px] leading-[1.05] text-almost-white min-[500px]:max-w-[825px] min-[500px]:text-[48px] min-[1200px]:max-w-[66.667%] min-[1200px]:text-[56px]">
+          Got a mission that needs a co-pilot? Let&rsquo;s chart the next course
+          together.
         </p>
 
         <div className="flex flex-wrap items-start gap-5 min-[500px]:flex-nowrap min-[500px]:items-center">
           <a
-            href="/contact"
-            onClick={handleNavClick("/contact")}
-            className="flex h-12 shrink-0 items-center justify-center rounded-full border-[1.5px] border-almost-white bg-ink px-6 text-[16px] text-almost-white transition-colors duration-300 hover:bg-almost-white hover:text-ink min-[500px]:h-[45px]"
+            href="mailto:cforbesdesign@gmail.com"
+            className="flex h-12 shrink-0 items-center justify-center rounded-full border-[1.5px] border-almost-white bg-ink px-6 text-[16px] font-medium text-almost-white transition-colors duration-300 hover:bg-almost-white hover:text-ink min-[500px]:h-[45px]"
           >
-            Make Contact
+            Contact
           </a>
           <div className="flex w-full shrink-0 items-center gap-3 rounded-full px-2 py-3 min-[500px]:w-auto min-[500px]:px-5">
             <span className="relative size-2 shrink-0 rounded-full bg-[#22c55e] animate-status-pulse" />
-            <p className="text-[14px] font-bold text-almost-white opacity-90">Available For Work</p>
+            <p className="text-[14px] text-almost-white opacity-90">All systems go</p>
           </div>
         </div>
 

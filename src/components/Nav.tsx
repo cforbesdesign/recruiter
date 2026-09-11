@@ -3,6 +3,7 @@ import { handleNavClick } from "../hooks/useRoute";
 
 function LogoIcon() {
   const [hovered, setHovered] = useState(false);
+  const color = hovered ? "#EC4E33" : "#282828";
   return (
     <svg
       width="40"
@@ -10,81 +11,50 @@ function LogoIcon() {
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="rounded-full block"
+      className="block size-10 xs:size-12"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <defs>
-        <mask id="logo-cutout">
-          <rect width="48" height="48" fill="white" />
-          <path d="M28.8889 22.3056V19.1094H13V34.9983H28.8889V31.802H16.1921V22.3046L28.8889 22.3056Z" fill="black" />
-          <path d="M34.9794 13H13V16.161H31.8395V25.5702H19.2798V28.7341H31.8395V35H35V13H34.9794Z" fill="black" />
-        </mask>
-      </defs>
-      <rect
-        width="48"
-        height="48"
-        mask="url(#logo-cutout)"
-        style={{ fill: hovered ? "#EC4E33" : "#282828", transition: "fill 300ms ease" }}
-      />
+      <rect width="48" height="48" rx="24" style={{ fill: color, transition: "fill 300ms ease" }} />
+      <path d="M27.2362 22.7698C27.4126 22.7698 27.5556 22.6269 27.5556 22.4505V20.7646C27.5556 20.5883 27.4126 20.4453 27.2363 20.4453H16.3193C16.143 20.4453 16 20.5883 16 20.7646V31.6816C16 31.8579 16.143 32.0009 16.3193 32.0009H27.2363C27.4126 32.0009 27.5556 31.8579 27.5556 31.6816V29.9956C27.5556 29.8193 27.4126 29.6763 27.2363 29.6763H18.6408C18.4645 29.6763 18.3215 29.5334 18.3215 29.357V23.0885C18.3215 22.9121 18.4645 22.7691 18.6408 22.7692L27.2362 22.7698Z" fill="white" />
+      <path d="M32 16.3193C32 16.143 31.857 16 31.6807 16H16.3193C16.143 16 16 16.143 16 16.3193V17.9796C16 18.1559 16.143 18.2989 16.3193 18.2989H29.3822C29.5585 18.2989 29.7014 18.4418 29.7014 18.6182V24.8226C29.7014 24.999 29.5585 25.1419 29.3821 25.1419H20.8864C20.7101 25.1419 20.5671 25.2849 20.5671 25.4612V27.1237C20.5671 27.3 20.7101 27.443 20.8864 27.443H29.3822C29.5585 27.443 29.7014 27.5859 29.7014 27.7623V31.6807C29.7014 31.857 29.8444 32 30.0207 32H31.6807C31.857 32 32 31.857 32 31.6807V16.3193Z" fill="white" />
+      <rect x="1.125" y="1.125" width="45.75" height="45.75" rx="22.875" stroke={color} strokeWidth="2.25" style={{ transition: "stroke 300ms ease" }} />
     </svg>
   );
 }
 
+// Mobile defaults to black/white; desktop (xs:) flips to white/black. Hover always
+// inverts whichever is currently resting.
+const PILL_COLORS =
+  "bg-ink text-white hover:bg-white hover:text-ink xs:bg-white/50 xs:text-ink xs:hover:bg-ink xs:hover:text-white transition-colors duration-300";
+
 function ContactCTA({ style, className, onClick }: { style?: React.CSSProperties; className?: string; onClick?: () => void }) {
-  const [hovered, setHovered] = useState(false);
   return (
     <a
-      href="/contact"
-      className={className}
-      style={{
-        ...style,
-        backgroundColor: hovered ? "#EC4E33" : "rgb(20, 20, 20)",
-        transition: "background-color 300ms ease",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={(e) => {
-        handleNavClick("/contact")(e);
-        onClick?.();
-      }}
+      href="mailto:cforbesdesign@gmail.com"
+      className={`${PILL_COLORS} ${className ?? ""}`}
+      style={style}
+      onClick={() => onClick?.()}
     >
-      Make Contact
+      Contact
     </a>
   );
 }
 
-function NavLink({ href, external, children }: { href: string; external?: boolean; children: React.ReactNode }) {
-  const [hovered, setHovered] = useState(false);
+function LinkedInCTA({ style, className, onClick }: { style?: React.CSSProperties; className?: string; onClick?: () => void }) {
   return (
     <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        fontFamily: '"neue-haas-grotesk-display", sans-serif',
-        fontSize: 16,
-        fontWeight: 600,
-        letterSpacing: "0.2px",
-        lineHeight: "22px",
-        color: hovered ? "#EC4E33" : "rgb(20, 20, 20)",
-        textDecoration: "none",
-        transition: "color 300ms ease",
-      }}
+      href="https://linkedin.com/in/craig-forbes-8769331b"
+      target="_blank"
+      rel="noreferrer"
+      className={`${PILL_COLORS} ${className ?? ""}`}
+      style={style}
+      onClick={() => onClick?.()}
     >
-      {children}
+      LinkedIn
     </a>
   );
 }
-
-const links = [
-  { label: "Work", href: "/#work" },
-  { label: "About", href: "/#about" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/craig-forbes-8769331b", external: true },
-  { label: "Make Contact", href: "/contact", external: false },
-];
 
 function HamburgerIcon({ open }: { open: boolean }) {
   const barBase: React.CSSProperties = {
@@ -142,41 +112,47 @@ export function Nav() {
       }}
     >
       {/* Top row — logo left, links/hamburger right. Never moves. */}
-      <div
-        className="flex items-center justify-between p-4 xs:p-2"
-      >
-        <a href="/" onClick={handleNavClick("/")} className="flex items-center">
+      <div className="flex items-center justify-between p-4 xs:p-2">
+        <a id="nav-logo" href="/" onClick={handleNavClick("/")} className="flex items-center">
           <LogoIcon />
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-6 xs:flex">
-          {links.map(({ label, href, external }) => {
-            const isCta = label === "Make Contact";
-            return (
-              <li key={label}>
-                {isCta ? (
-                  <ContactCTA
-                    style={{
-                      fontFamily: '"neue-haas-grotesk-display", sans-serif',
-                      fontSize: 16,
-                      fontWeight: 600,
-                      letterSpacing: "0.2px",
-                      color: "#f5f5f5",
-                      textDecoration: "none",
-                      borderRadius: 9999,
-                      padding: "8px 20px",
-                      display: "inline-block",
-                    }}
-                  />
-                ) : (
-                  <NavLink href={href} external={external}>
-                    {label}
-                  </NavLink>
-                )}
-              </li>
-            );
-          })}
+        <ul className="hidden items-center gap-2 xs:flex">
+          <li>
+            <LinkedInCTA
+              className="rounded-full"
+              style={{
+                fontFamily: '"neue-haas-grotesk-display", sans-serif',
+                fontSize: 16,
+                fontWeight: 500,
+                letterSpacing: "0.2px",
+                textDecoration: "none",
+                height: 48,
+                padding: "0 24px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            />
+          </li>
+          <li>
+            <ContactCTA
+              className="rounded-full"
+              style={{
+                fontFamily: '"neue-haas-grotesk-display", sans-serif',
+                fontSize: 16,
+                fontWeight: 500,
+                letterSpacing: "0.2px",
+                textDecoration: "none",
+                height: 48,
+                padding: "0 20px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            />
+          </li>
         </ul>
 
         {/* Mobile hamburger */}
@@ -200,48 +176,28 @@ export function Nav() {
           transition: "max-height 0.35s ease-in-out",
         }}
       >
-        {/* Gap between top row and links matches Mobbin's gap:20px */}
-        <ul
-          className="flex flex-col"
-          style={{ padding: "8px 20px 20px", gap: 16 }}
-        >
-          {links.slice(0, -1).map(({ label, href, external }, index) => (
-            <li key={label}>
-              <a
-                href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noreferrer" : undefined}
-                className={`block transition-all duration-300 ease-out ${
-                  open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
-                }`}
-                style={{
-                  fontFamily: '"neue-haas-grotesk-display", sans-serif',
-                  fontSize: 16,
-                  fontWeight: 600,
-                  letterSpacing: "0.2px",
-                  lineHeight: "22px",
-                  color: "rgb(20, 20, 20)",
-                  textDecoration: "none",
-                  transitionDelay: open ? `${index * 50 + 50}ms` : "0ms",
-                }}
-                onClick={() => setOpen(false)}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <div style={{ padding: "0 13px 13px" }}>
+        <div className="flex flex-col gap-3" style={{ padding: "16px" }}>
+          <LinkedInCTA
+            className="block w-full text-center"
+            style={{
+              fontFamily: '"neue-haas-grotesk-display", sans-serif',
+              borderRadius: 9999,
+              padding: "12px 0",
+              fontSize: 16,
+              fontWeight: 500,
+              letterSpacing: "0.2px",
+              textDecoration: "none",
+            }}
+            onClick={() => setOpen(false)}
+          />
           <ContactCTA
             className="block w-full text-center"
             style={{
               fontFamily: '"neue-haas-grotesk-display", sans-serif',
-              color: "#f5f5f5",
               borderRadius: 9999,
               padding: "12px 0",
               fontSize: 16,
-              fontWeight: 600,
+              fontWeight: 500,
               letterSpacing: "0.2px",
               textDecoration: "none",
             }}
