@@ -38,6 +38,7 @@ function PageTransition({ path, children }: { path: string; children: ReactNode 
   const [visible, setVisible] = useState(false);
 
   useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     setVisible(false);
     const raf = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(raf);

@@ -22,7 +22,6 @@ export function navigate(to: string) {
   if (to === window.location.pathname) return;
   window.history.pushState({}, "", to);
   window.dispatchEvent(new Event("routechange"));
-  window.scrollTo(0, 0);
 }
 
 /**
