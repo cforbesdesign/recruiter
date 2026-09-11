@@ -17,7 +17,7 @@ export function Home() {
       <Hero video={heroAstronautVideo} poster={heroAstronautPoster} lowered>
         <span className="text-accent">Craig Forbes</span> is an East
         Coast-based Design Lead passionate about crafting stellar brands and
-        products.
+        products
       </Hero>
       <SelectedProjects />
       <About />

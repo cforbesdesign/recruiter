@@ -132,7 +132,7 @@ export function Baltimore() {
                 <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Fitbit</span>
                   <br />
-                  Crafting cohesive experiences for the fitness-forward brand.
+                  Crafting cohesive experiences for the fitness-forward brand
                 </p>
               </div>
             </a>
@@ -153,7 +153,7 @@ export function Baltimore() {
                 <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Google</span>
                   <br />
-                  An agentic enterprise assistant powered by Google Gemini.
+                  An agentic enterprise assistant powered by Google Gemini
                 </p>
               </div>
             </a>

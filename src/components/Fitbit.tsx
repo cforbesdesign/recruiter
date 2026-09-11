@@ -60,7 +60,7 @@ export function Fitbit() {
     <>
       <Hero video={fitbitHeroVideo} poster={fitbitHero} lowered>
         Crafting a cohesive cross-channel experience for the{" "}
-        <span className="text-accent">fitness-forward brand.</span>
+        <span className="text-accent">fitness-forward brand</span>
       </Hero>
 
       <section className="bg-almost-white">
@@ -169,7 +169,7 @@ export function Fitbit() {
                 <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Google</span>
                   <br />
-                  An agentic enterprise assistant powered by Google Gemini.
+                  An agentic enterprise assistant powered by Google Gemini
                 </p>
               </div>
             </a>
@@ -190,7 +190,7 @@ export function Fitbit() {
                 <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Baltimore Magazine</span>
                   <br />
-                  Designing the go-to-guide for everything Baltimore.
+                  Designing the go-to-guide for everything Baltimore
                 </p>
               </div>
             </a>
