@@ -63,7 +63,7 @@ export function PasswordProtected() {
         )}
       </button>
 
-      <div className="relative flex">
+      <div className="relative hidden xs:flex">
         <div className="size-12 shrink-0">
           <img src={logoMark} alt="" className="size-full" />
         </div>

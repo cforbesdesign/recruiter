@@ -33,7 +33,7 @@ import baltimoreMagazineImage from "../assets/images/selected-projects/baltimore
 import fitbitImage from "../assets/images/selected-projects/fitbit.png";
 
 const OVERVIEW_BODY =
-  "Google approached Huge with an open brief: imagine what a Gemini-powered enterprise product could be, unconstrained by an existing feature set or technical roadmap. Rather than another AI chatbot layered onto existing tools, the opportunity was a bigger question: what would work look like if software understood the person using it, the organization around them, and the work happening across both? The result is Spark, a concept spanning the employee home, enterprise search, agentic workflows, admin tools, personalization, and a companion marketing microsite.";
+  "Google approached Huge with an open brief: imagine what a Gemini-powered enterprise product could be, unconstrained by an existing feature set or technical roadmap. Rather than another AI chatbot layered onto existing tools, the opportunity was a bigger question: what would work look like if software understood the person using it, the organization around them, and the work happening across both? The result is Spark for enterprise, a concept spanning the employee home, enterprise search, agentic workflows, admin tools, personalization, and a companion marketing microsite.";
 
 const RESEARCH_BODY =
   "We studied the tools enterprise employees already live in, from AI assistants like ChatGPT and Claude to traditional intranets, Slack, Jira, and Google Workspace, then ran internal interviews with Google employees to see where those tools broke down. The insight that shaped everything: people didn't want Spark to replace their tools, they wanted something that understood context, surfaced what mattered, and got out of the way once a specialized app was the better place to continue. Spark became an intelligent connective layer, not one more destination to check.";
@@ -50,10 +50,10 @@ const MICROSITE_BODY =
 function SectionIntro({ heading, body }: { heading: string; body: string }) {
   return (
     <div className="flex flex-col gap-6 md:flex-row md:gap-12">
-      <h3 className="flex-1 text-[30px] leading-[1.05] text-ink md:text-[48px]">
+      <h3 className="flex-1 text-[20px] font-semibold leading-[1.05] text-ink md:text-[30px]">
         {heading}
       </h3>
-      <p className="flex-1 text-[20px] leading-[1.31] text-ink">{body}</p>
+      <p className="flex-1 text-[20px] font-medium leading-[1.31] text-ink md:font-normal">{body}</p>
     </div>
   );
 }
@@ -62,7 +62,7 @@ function PlaceholderShot({ image, caption }: { image: string; caption: string })
   return (
     <figure>
       <ProjectImage image={image} alt={caption} aspect="1920/1080" />
-      <figcaption className="mt-4 text-[16px] text-ink">{caption}</figcaption>
+      <figcaption className="mt-4 font-mono text-[14px] tracking-tight text-[#555555]">{caption}</figcaption>
     </figure>
   );
 }
@@ -143,7 +143,7 @@ export function GoogleAgenticAssistant() {
                   <img src={moodboardGpt} alt="" className="h-full w-full object-cover" />
                 </div>
               </div>
-              <p className="text-[16px] text-[#4e4e4e]">
+              <p className="font-mono text-[14px] tracking-tight text-[#555555]">
                 We spent a lot of time looking at the current project
                 management, collaboration and AI tools to see where Spark
                 could bring true innovation.
@@ -158,7 +158,7 @@ export function GoogleAgenticAssistant() {
           <div className="flex flex-col gap-12 pb-12 md:gap-26 md:pb-26">
             <SectionIntro heading="The design language" body={DESIGN_LANGUAGE_BODY} />
 
-            <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2 sm:gap-y-12">
               <img
                 src={brand1}
                 alt="Spark mood board"
@@ -200,34 +200,36 @@ export function GoogleAgenticAssistant() {
                 body={'Search that answers instead of linking. Typing "Help me plan my travel to the New York office" doesn\'t return a list of intranet pages; it returns an AI Answer confirming the employee\'s approved travel window and budget, a "Plan my trip" action, and a short list of the people and documents actually relevant to the task: a travel coordinator, the company travel policy, a past trip record. Search resolves to an answer with a next step attached, not a results page to sort through.'}
               />
 
-              <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2">
-                <figure>
-                  <img
-                    src={connectors}
-                    alt="Connector data"
-                    className="h-auto w-full rounded-2xl"
-                  />
-                  <figcaption className="mt-4 text-[16px] text-ink">
-                    Connector data
-                  </figcaption>
-                </figure>
+              <div className="flex flex-col gap-6 md:gap-26">
+                <div className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2 sm:gap-y-12">
+                  <figure>
+                    <img
+                      src={connectors}
+                      alt="Connector data"
+                      className="h-auto w-full rounded-2xl"
+                    />
+                    <figcaption className="mt-4 font-mono text-[14px] tracking-tight text-[#555555]">
+                      Connector data
+                    </figcaption>
+                  </figure>
 
-                <figure>
-                  <img
-                    src={uiCustomization}
-                    alt="Intelligent UI customization"
-                    className="h-auto w-full rounded-2xl"
-                  />
-                  <figcaption className="mt-4 text-[16px] text-ink">
-                    Intelligent UI customization
-                  </figcaption>
-                </figure>
+                  <figure>
+                    <img
+                      src={uiCustomization}
+                      alt="Intelligent UI customization"
+                      className="h-auto w-full rounded-2xl"
+                    />
+                    <figcaption className="mt-4 font-mono text-[14px] tracking-tight text-[#555555]">
+                      Intelligent UI customization
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <PlaceholderShot
+                  image={personalization}
+                  caption="The same underlying system, restyled for a different organization entirely."
+                />
               </div>
-
-              <PlaceholderShot
-                image={personalization}
-                caption="The same underlying system, restyled for a different organization entirely."
-              />
             </div>
           </div>
         </div>
@@ -238,23 +240,28 @@ export function GoogleAgenticAssistant() {
           <div className="flex flex-col gap-12 pb-12 md:gap-26 md:pb-26">
             <SectionIntro heading="The microsite" body={MICROSITE_BODY} />
 
-            <ProjectVideo
-              video={micrositeVideo}
-              poster={micrositeDesktop}
-              aspect="1352/761"
-            />
+            <div className="flex flex-col gap-6 md:gap-26">
+              <ProjectVideo
+                video={micrositeVideo}
+                poster={micrositeDesktop}
+                aspect="1352/761"
+              />
 
-            <ProjectImage
-              image={micrositeMobile}
-              alt="Spark marketing microsite shown across mobile screens"
-              aspect="1352/761"
-            />
+              <ProjectImage
+                image={micrositeMobile}
+                alt="Spark marketing microsite shown across mobile screens"
+                aspect="1352/761"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       <section className="bg-white pt-12 md:pt-26">
         <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
+          <h2 className="mb-12 text-[30px] font-semibold leading-[1.05] text-ink md:mb-26">
+            Up next
+          </h2>
           <div className="grid grid-cols-1 gap-x-12 gap-y-12 pb-12 sm:grid-cols-2 md:pb-26">
             <a
               href="/work/baltimore-magazine"
@@ -269,8 +276,7 @@ export function GoogleAgenticAssistant() {
                 />
               </div>
               <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[16px] text-[#4e4e4e]">Previous Project</p>
-                <p className="mt-2 text-[20px] text-ink">
+                <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">
                     Baltimore Magazine
                   </span>
@@ -293,8 +299,7 @@ export function GoogleAgenticAssistant() {
                 />
               </div>
               <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[16px] text-[#4e4e4e]">Up Next</p>
-                <p className="mt-2 text-[20px] text-ink">
+                <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Fitbit</span>
                   <br />
                   Crafting cohesive experiences for the fitness-forward brand.

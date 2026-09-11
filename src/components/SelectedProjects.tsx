@@ -28,7 +28,7 @@ const projects: Project[] = [
   {
     number: "02",
     name: "Fitbit",
-    description: "Crafting a cohesive experiences for the fitness-forward brand",
+    description: "Crafting a cohesive cross-channel experience for the fitness-forward brand",
     image: fitbitImage,
     alt: "Fitbit Luxe introduction screen shown on a phone",
     href: "/work/fitbit",
@@ -36,7 +36,7 @@ const projects: Project[] = [
   {
     number: "03",
     name: "Baltimore Magazine",
-    description: "Designing the go-to-guide for everything Baltimore.",
+    description: "Designing the go-to-guide for everything Baltimore",
     image: baltimoreMagazineImage,
     alt: "Baltimore magazine website pages shown at an angle",
     href: "/work/baltimore-magazine",
@@ -81,9 +81,10 @@ function ProjectCard({
           className="h-full w-full bg-cover bg-center transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
-      <p className="mt-6 text-[20px] leading-[1.31] text-ink transition-opacity duration-300 ease-out group-hover:opacity-75">
+      <p className="mt-6 text-[20px] font-medium leading-[1.31] text-ink transition-opacity duration-300 ease-out group-hover:opacity-75 md:font-normal">
         <span className="font-bold">
-          {project.number} {project.name}
+          {/* {project.number} */}
+          {project.name}
         </span>
         <br />
         {project.description}
@@ -115,7 +116,7 @@ export function SelectedProjects() {
     <section className="bg-almost-white">
       <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
         <div className="flex flex-col gap-[27px] py-12 md:pt-0 md:pb-[136px]">
-          <h2 className="text-[30px] leading-[1.05] text-ink">
+          <h2 className="text-[30px] font-semibold leading-[1.05] text-ink">
             Selected Projects
           </h2>
           <div className="h-px w-full bg-grey-1" />

@@ -132,7 +132,7 @@ export function HighlightsCarousel({
               )}
             </div>
             {slide.caption && (
-              <p className="mt-6 text-[16px] leading-[normal] text-ink">
+              <p className="mt-6 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555]">
                 {slide.caption}
               </p>
             )}

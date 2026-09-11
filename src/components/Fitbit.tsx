@@ -43,10 +43,10 @@ const fbAdSlides: HighlightSlide[] = [
 function SectionIntro({ heading, body }: { heading: string; body: string }) {
   return (
     <div className="flex flex-col gap-6 md:flex-row md:gap-12">
-      <h3 className="flex-1 text-[30px] leading-[1.05] text-ink md:text-[48px]">
+      <h3 className="flex-1 text-[20px] font-semibold leading-[1.05] text-ink md:text-[30px]">
         {heading}
       </h3>
-      <p className="flex-1 text-[20px] leading-[1.31] text-ink">{body}</p>
+      <p className="flex-1 text-[20px] font-medium leading-[1.31] text-ink md:font-normal">{body}</p>
     </div>
   );
 }
@@ -71,9 +71,11 @@ export function Fitbit() {
               body="As part of the team at Havas, I worked with Fitbit to elevate their digital presence across e-commerce, app experiences, and CRM. On the web store, we updated navigation tiles and reduced cognitive load in the site hierarchy, while crafting animated marquee heroes for the homepage. We also created visual assets for the Fitbit Premium app and designed a modular email design system for Fitbit's Premium subscriber marketing. Built to streamline the creative process while maintaining a consistent, high-quality visual language, this email framework allowed for rapid ideation, design, and deployment, giving cross-functional teams a shared system to efficiently launch consumer campaigns."
             />
 
-            <ProjectImage image={fitbitBom1} alt="Fitbit campaign visual design" aspect="1352/761" />
-            <ProjectImage image={fitbitBom2} alt="Fitbit campaign visual design, alternate layout" aspect="1352/761" />
-            {/* <ProjectImage image={fitbitMarquee2} alt="Fitbit homepage hero promoting its most advanced fitness tracker" /> */}
+            <div className="flex flex-col gap-6 md:gap-26">
+              <ProjectImage image={fitbitBom1} alt="Fitbit campaign visual design" aspect="1352/761" />
+              <ProjectImage image={fitbitBom2} alt="Fitbit campaign visual design, alternate layout" aspect="1352/761" />
+              {/* <ProjectImage image={fitbitMarquee2} alt="Fitbit homepage hero promoting its most advanced fitness tracker" /> */}
+            </div>
           </div>
         </div>
       </section>
@@ -105,18 +107,20 @@ export function Fitbit() {
               processes.
             </ProjectNote>
 
-            <ProjectImage image={fitbitModules} alt="Fitbit modular email design system components" />
+            <div className="flex flex-col gap-6 md:gap-26">
+              <ProjectImage image={fitbitModules} alt="Fitbit modular email design system components" />
 
-            <ProjectImageRow
-              images={[
-                { src: fitbitEmail1, alt: "Fitbit email design, light theme" },
-                { src: fitbitEmail2, alt: "Fitbit email design, warm theme" },
-                { src: fitbitEmail3, alt: "Fitbit email design, dark mode" },
-              ]}
-            />
+              <ProjectImageRow
+                images={[
+                  { src: fitbitEmail1, alt: "Fitbit email design, light theme" },
+                  { src: fitbitEmail2, alt: "Fitbit email design, warm theme" },
+                  { src: fitbitEmail3, alt: "Fitbit email design, dark mode" },
+                ]}
+              />
 
-            <ProjectImage image={fitbitMarquee3} alt="Grid of Fitbit marketing email campaign designs" />
-            <ProjectImage image={fitbit4} alt="Three Fitbit Versa marketing emails for a Black Friday campaign" />
+              <ProjectImage image={fitbitMarquee3} alt="Grid of Fitbit marketing email campaign designs" />
+              <ProjectImage image={fitbit4} alt="Three Fitbit Versa marketing emails for a Black Friday campaign" />
+            </div>
 
             <ProjectNote heading="Awards &amp; Accolades">
               Our work was recognized for excellence by{" "}
@@ -145,6 +149,9 @@ export function Fitbit() {
 
       <section className="bg-white pt-12 md:pt-26">
         <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
+          <h2 className="mb-12 text-[30px] font-semibold leading-[1.05] text-ink md:mb-26">
+            Up next
+          </h2>
           <div className="grid grid-cols-1 gap-x-12 gap-y-12 pb-12 sm:grid-cols-2 md:pb-26">
             <a
               href="/work/google-agentic-assistant"
@@ -159,8 +166,7 @@ export function Fitbit() {
                 />
               </div>
               <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[16px] text-[#4e4e4e]">Previous Project</p>
-                <p className="mt-2 text-[20px] text-ink">
+                <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Google</span>
                   <br />
                   An agentic enterprise assistant powered by Google Gemini.
@@ -181,8 +187,7 @@ export function Fitbit() {
                 />
               </div>
               <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[16px] text-[#4e4e4e]">Up Next</p>
-                <p className="mt-2 text-[20px] text-ink">
+                <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Baltimore Magazine</span>
                   <br />
                   Designing the go-to-guide for everything Baltimore.
