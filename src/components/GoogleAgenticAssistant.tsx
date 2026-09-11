@@ -253,7 +253,7 @@ export function GoogleAgenticAssistant() {
         </div>
       </section>
 
-      <section className="rounded-t-[64px] bg-white pt-12 md:pt-26">
+      <section className="bg-white pt-12 md:pt-26">
         <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
           <div className="grid grid-cols-1 gap-x-12 gap-y-12 pb-12 sm:grid-cols-2 md:pb-26">
             <a
