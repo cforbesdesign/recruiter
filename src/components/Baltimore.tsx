@@ -9,6 +9,8 @@ import {
   ProjectNote,
   ProjectVideo,
 } from "./ProjectSection";
+import { HighlightsCarousel } from "./HighlightsCarousel";
+import type { HighlightSlide } from "./HighlightsCarousel";
 import bmagHero from "../assets/images/work/bmag-hero.png";
 import bmagTemplates1 from "../assets/images/work/bmag-templates-1.png";
 import bmagTemplates2 from "../assets/images/work/bmag-templates-2.png";
@@ -21,6 +23,34 @@ import bmagSeafoodApp from "../assets/images/work/bmag-seafood-app.png";
 import bmagSeafoodAppVideo from "../assets/videos/work/bmag-seafood-app.mp4";
 import fitbitImage from "../assets/images/selected-projects/fitbit.png";
 import googleImage from "../assets/images/selected-projects/google.png";
+import bmagCarousel1 from "../assets/images/work/bmag-carousel-1.jpg";
+import bmagCarousel2 from "../assets/images/work/bmag-carousel-2.jpg";
+import bmagCarousel3 from "../assets/images/work/bmag-carousel-3.jpg";
+import bmagCarousel4 from "../assets/images/work/bmag-carousel-4.jpg";
+import bmagCarousel5 from "../assets/images/work/bmag-carousel-5.jpg";
+
+const bmagCarouselSlides: HighlightSlide[] = [
+  {
+    image: bmagCarousel1,
+    alt: "Artscape Roundup guide page with a blue and yellow geometric header graphic",
+  },
+  {
+    image: bmagCarousel2,
+    alt: "Draft King review of Taps Fill Station with a row of beer glasses",
+  },
+  {
+    image: bmagCarousel3,
+    alt: "Baltimore magazine shown across three mobile screens: a category page, featured doctors listing, and a market guide",
+  },
+  {
+    image: bmagCarousel4,
+    alt: "Sponsored crab-picking guide article with recipe content and sidebar ads",
+  },
+  {
+    image: bmagCarousel5,
+    alt: "Article on how Baltimore magazine inspired Hairspray, featuring John Waters",
+  },
+];
 
 function SectionIntro({ heading, body }: { heading: string; body: string }) {
   return (
@@ -62,7 +92,15 @@ export function Baltimore() {
                 title="Baltimore magazine video feature"
               />
             </div>
+          </div>
+        </div>
+      </section>
 
+      <HighlightsCarousel slides={bmagCarouselSlides} />
+
+      <section className="bg-almost-white">
+        <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
+          <div className="flex flex-col gap-12 pb-12 md:gap-26 md:pb-26">
             <ProjectNote heading="Do your thing">
               We developed a flexible system of templates: some were
               blog-style layouts the editorial team could use right away,
@@ -83,7 +121,7 @@ export function Baltimore() {
               &ldquo;A Fault in His Stars,&rdquo; illustrated by the
               award-winning Rory Kurtz. We&rsquo;ve also received over a
               dozen City and Regional Magazine Association awards, including
-              a 2016 Multiplatform Storytelling Finalist nod for our iOS
+              a coveted Multiplatform Storytelling Finalist nod for our iOS
               Seafood Guide, which we designed and published in-house.
             </ProjectNote>
 
