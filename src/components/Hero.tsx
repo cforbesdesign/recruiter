@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { useInView } from "../hooks/useInView";
 
