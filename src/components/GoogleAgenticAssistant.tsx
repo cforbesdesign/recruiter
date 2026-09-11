@@ -12,6 +12,7 @@ import personalization from "../assets/images/work/google-spark-personalization.
 import moodboardAsana from "../assets/images/work/google-spark-moodboard-asana.jpg";
 import moodboardTeams from "../assets/images/work/google-spark-moodboard-teams.jpg";
 import moodboardGpt from "../assets/images/work/google-spark-moodboard-gpt.jpg";
+import moodboardOtherTools from "../assets/images/work/google-spark-moodboard-other-tools.gif";
 import carousel1 from "../assets/images/work/google-spark-carousel-1.jpg";
 import carousel2 from "../assets/images/work/google-spark-carousel-2.jpg";
 import carousel3Poster from "../assets/images/work/google-spark-carousel-3-poster.jpg";
@@ -39,7 +40,7 @@ const RESEARCH_BODY =
   "We studied the tools enterprise employees already live in, from AI assistants like ChatGPT and Claude to traditional intranets, Slack, Jira, and Google Workspace, then ran internal interviews with Google employees to see where those tools broke down. The insight that shaped everything: people didn't want Spark to replace their tools, they wanted something that understood context, surfaced what mattered, and got out of the way once a specialized app was the better place to continue. Spark became an intelligent connective layer, not one more destination to check.";
 
 const DESIGN_LANGUAGE_BODY =
-  "Spark was designed to feel nothing like the dense, utilitarian software most enterprise employees are stuck with. The visual language leans on whitespace, large type, soft surfaces, and a palette built from the Gemini gradient, Google Blue and Grey, and a lighter Spark Magic Purple reserved specifically to signal AI at work: a suggestion, a loading state, an assistive prompt. A flexible card system, small to large, lets the home screen behave like a living canvas instead of a fixed dashboard.";
+  "Spark for enterprise was designed to feel nothing like the dense, utilitarian software most enterprise employees are stuck with. The visual language leans on whitespace, large type, soft surfaces, and a palette built from the Gemini gradient, Google Blue and Grey, and a lighter Spark Magic Purple reserved specifically to signal AI at work: a suggestion, a loading state, an assistive prompt. A flexible card system, small to large, lets the home screen behave like a living canvas instead of a fixed dashboard.";
 
 const PRODUCT_FEATURES_BODY =
   'Ask Spark to plan a trip and it does more than answer: it checks your approved travel dates and budget, pulls relevant flights and hotels, and turns the request into a workflow you can act on. The same intelligence powers search that resolves to an answer instead of a results page, employee profiles that read more like a knowledge graph than a directory, and an admin experience where a prompt like "make this feel like our company" generates a working brand theme. Complexity lives underneath the interface, never inside it.';
@@ -62,7 +63,7 @@ function PlaceholderShot({ image, caption }: { image: string; caption: string })
   return (
     <figure>
       <ProjectImage image={image} alt={caption} aspect="1920/1080" />
-      <figcaption className="mt-4 font-mono text-[14px] tracking-tight text-[#555555]">{caption}</figcaption>
+      <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">{caption}</figcaption>
     </figure>
   );
 }
@@ -115,7 +116,7 @@ export function GoogleAgenticAssistant() {
     <>
       <Hero video={heroVideo} poster={heroPoster} frameColor="#E6DBF9" lowered>
         An agentic enterprise collaboration and productivity platform powered
-        by <span className="text-accent">Google Gemini</span>.
+        by <span className="text-accent">Google Gemini</span>
       </Hero>
 
       <section className="bg-almost-white">
@@ -132,7 +133,10 @@ export function GoogleAgenticAssistant() {
             <SectionIntro heading="Research & strategy" body={RESEARCH_BODY} />
 
             <div className="flex flex-col gap-6">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+              <div className="aspect-[434/244] w-full overflow-hidden rounded-2xl sm:hidden">
+                <img src={moodboardOtherTools} alt="" className="h-full w-full object-cover" />
+              </div>
+              <div className="hidden gap-6 sm:grid sm:grid-cols-3">
                 <div className="aspect-[434/244] w-full overflow-hidden rounded-2xl">
                   <img src={moodboardAsana} alt="" className="h-full w-full object-cover" />
                 </div>
@@ -143,7 +147,7 @@ export function GoogleAgenticAssistant() {
                   <img src={moodboardGpt} alt="" className="h-full w-full object-cover" />
                 </div>
               </div>
-              <p className="font-mono text-[14px] tracking-tight text-[#555555]">
+              <p className="font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
                 We spent a lot of time looking at the current project
                 management, collaboration and AI tools to see where Spark
                 could bring true innovation.
@@ -208,7 +212,7 @@ export function GoogleAgenticAssistant() {
                       alt="Connector data"
                       className="h-auto w-full rounded-2xl"
                     />
-                    <figcaption className="mt-4 font-mono text-[14px] tracking-tight text-[#555555]">
+                    <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
                       Connector data
                     </figcaption>
                   </figure>
@@ -219,7 +223,7 @@ export function GoogleAgenticAssistant() {
                       alt="Intelligent UI customization"
                       className="h-auto w-full rounded-2xl"
                     />
-                    <figcaption className="mt-4 font-mono text-[14px] tracking-tight text-[#555555]">
+                    <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
                       Intelligent UI customization
                     </figcaption>
                   </figure>
@@ -281,7 +285,7 @@ export function GoogleAgenticAssistant() {
                     Baltimore Magazine
                   </span>
                   <br />
-                  Designing the go-to-guide for everything Baltimore.
+                  Designing the go-to-guide for everything Baltimore
                 </p>
               </div>
             </a>
@@ -302,7 +306,7 @@ export function GoogleAgenticAssistant() {
                 <p className="text-[20px] font-medium text-ink md:font-normal">
                   <span className="font-semibold text-accent">Fitbit</span>
                   <br />
-                  Crafting cohesive experiences for the fitness-forward brand.
+                  Crafting cohesive experiences for the fitness-forward brand
                 </p>
               </div>
             </a>

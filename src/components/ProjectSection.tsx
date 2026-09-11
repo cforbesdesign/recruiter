@@ -127,7 +127,7 @@ export function ProjectVideo({
         />
       </div>
       {caption && (
-        <figcaption className="mt-4 font-mono text-[14px] tracking-tight text-[#555555]">
+        <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
           {caption}
         </figcaption>
       )}
@@ -237,7 +237,7 @@ function RowMedia({ img }: { img: RowImageItem }) {
         )}
       </div>
       {img.caption && (
-        <figcaption className="mt-4 text-center font-mono text-[14px] font-bold tracking-tight text-[#555555]">
+        <figcaption className="mt-4 text-center font-mono text-[14px] font-bold leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
           {img.caption}
         </figcaption>
       )}
