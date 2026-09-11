@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import type { ReactNode } from "react";
 import { handleNavClick } from "../hooks/useRoute";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
@@ -52,7 +53,7 @@ const bmagCarouselSlides: HighlightSlide[] = [
   },
 ];
 
-function SectionIntro({ heading, body }: { heading: string; body: string }) {
+function SectionIntro({ heading, body }: { heading: string; body: ReactNode }) {
   return (
     <div className="flex flex-col gap-6 md:flex-row md:gap-12">
       <h3 className="flex-1 text-[20px] font-semibold leading-[1.05] text-ink md:text-[30px]">
@@ -80,7 +81,19 @@ export function Baltimore() {
           <div className="flex flex-col gap-12 pb-12 md:gap-26 md:pb-26">
             <SectionIntro
               heading="Overview"
-              body="Baltimore Magazine's digital audience was growing rapidly, but the site was struggling to keep up. It still featured some non-responsive pages and had limited space for paid advertising and sponsorships, a good problem to have, but one that needed solving. My role was to help modernize the experience. I focused on enhancing immersive visuals, leveraging rich photography and illustration, while increasing ad space in a way that felt natural and unobtrusive. The site was designed in Sketch and built using Zurb Foundation and Craft CMS. I contributed to both the design and front-end development."
+              body={
+                <>
+                  <a
+                    href="https://www.baltimoremagazine.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-1 underline-offset-2 hover:text-accent"
+                  >
+                    Baltimore Magazine
+                  </a>
+                  &rsquo;s digital audience was growing rapidly, but the site was struggling to keep up. It still featured some non-responsive pages and had limited space for paid advertising and sponsorships, a good problem to have, but one that needed solving. My role was to help modernize the experience. I focused on enhancing immersive visuals, leveraging rich photography and illustration, while increasing ad space in a way that felt natural and unobtrusive. The site was designed in Sketch and built using Zurb Foundation and Craft CMS. I contributed to both the design and front-end development.
+                </>
+              }
             />
 
             <div className="flex flex-col gap-6 md:gap-26">
