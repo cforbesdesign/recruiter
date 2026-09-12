@@ -78,7 +78,7 @@ export function PasswordProtected() {
       </div>
       */}
 
-      <div className="relative flex flex-col items-center gap-2">
+      <div className="relative mt-12 flex flex-col items-center gap-2 xs:mt-0">
         <h1 className="text-[30px] font-semibold leading-[1.05] text-ink">
           This content is protected
         </h1>
@@ -98,7 +98,7 @@ export function PasswordProtected() {
             autoFocus
             aria-invalid={error}
             aria-label="Password"
-            className="h-[48px] w-[219px] rounded-[9.6px] border-2 border-[#a3a3a3] bg-transparent px-4 text-left font-mono text-[20px] tracking-tight text-ink caret-transparent outline-none placeholder:text-[16px] placeholder:text-[#b3b3b3]"
+            className="h-[48px] w-[319px] rounded-[9.6px] border-2 border-[#a3a3a3] bg-transparent px-4 text-left font-mono text-[20px] tracking-tight text-ink caret-transparent outline-none placeholder:text-[16px] placeholder:text-[#b3b3b3]"
           />
           {!value && (
             <span className="animate-blink pointer-events-none absolute top-1/2 left-4 h-[22px] w-[2px] -translate-y-1/2 bg-accent" />
@@ -108,7 +108,7 @@ export function PasswordProtected() {
           type="submit"
           disabled={!value}
           aria-label="Submit password"
-          className="h-[48px] w-[219px] rounded-[9.6px] bg-ink text-[20px] font-medium text-almost-white transition-colors hover:bg-ink/90 disabled:cursor-not-allowed disabled:opacity-40"
+          className="h-[48px] w-[319px] rounded-full bg-ink text-[20px] font-medium text-almost-white transition-colors hover:bg-ink/90 disabled:cursor-not-allowed disabled:opacity-40"
         >
           Submit
         </button>
