@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+// import { useEffect } from "react"; // only needed by the disabled noise-button alignment logic below
 import type { FormEvent } from "react";
 import { unlock } from "../hooks/useUnlock";
-import { NoiseBackground } from "./NoiseBackground";
+// import { NoiseBackground } from "./NoiseBackground"; // disabled for now, may bring back later
 import logoMark from "../assets/icons/logo.svg";
 import lockGlyph from "../assets/icons/lock-glyph.svg";
 import arrowRight from "../assets/icons/arrow-right.svg";
@@ -11,23 +12,24 @@ const PASSWORD = "let-me-in";
 export function PasswordProtected() {
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
-  const [noiseRunning, setNoiseRunning] = useState(true);
-  const [buttonLeft, setButtonLeft] = useState<number | null>(null);
-  const [buttonBottom, setButtonBottom] = useState<number | null>(null);
+  // Noise background + its pause button are disabled for now, may bring back later.
+  // const [noiseRunning, setNoiseRunning] = useState(true);
+  // const [buttonLeft, setButtonLeft] = useState<number | null>(null);
+  // const [buttonBottom, setButtonBottom] = useState<number | null>(null);
 
-  useEffect(() => {
-    const align = () => {
-      const navLogo = document.getElementById("nav-logo");
-      if (navLogo) {
-        const rect = navLogo.getBoundingClientRect();
-        setButtonLeft(rect.left);
-        setButtonBottom(rect.top);
-      }
-    };
-    align();
-    window.addEventListener("resize", align);
-    return () => window.removeEventListener("resize", align);
-  }, []);
+  // useEffect(() => {
+  //   const align = () => {
+  //     const navLogo = document.getElementById("nav-logo");
+  //     if (navLogo) {
+  //       const rect = navLogo.getBoundingClientRect();
+  //       setButtonLeft(rect.left);
+  //       setButtonBottom(rect.top);
+  //     }
+  //   };
+  //   align();
+  //   window.addEventListener("resize", align);
+  //   return () => window.removeEventListener("resize", align);
+  // }, []);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -40,6 +42,7 @@ export function PasswordProtected() {
 
   return (
     <section className="relative flex min-h-[100svh] flex-col items-center justify-start gap-8 overflow-hidden bg-almost-white px-6 pt-28 text-center xs:justify-center xs:pt-0">
+      {/* Noise background + its pause button are disabled for now, may bring back later.
       <NoiseBackground running={noiseRunning} />
 
       <button
@@ -62,6 +65,7 @@ export function PasswordProtected() {
           />
         )}
       </button>
+      */}
 
       <div className="relative hidden xs:flex">
         <div className="size-12 shrink-0">
