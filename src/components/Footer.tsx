@@ -43,7 +43,7 @@ export function Footer() {
         <div className="flex flex-wrap items-start gap-5 min-[500px]:flex-nowrap min-[500px]:items-center">
           <a
             href="mailto:cforbesdesign@gmail.com"
-            className="flex h-10 shrink-0 items-center justify-center rounded-full border-[1.5px] border-almost-white bg-ink px-6 text-[16px] font-medium text-almost-white transition-colors duration-300 hover:bg-almost-white hover:text-ink"
+            className="flex h-12 shrink-0 items-center justify-center rounded-full border-[1.5px] border-almost-white bg-ink px-6 text-[16px] font-medium text-almost-white transition-colors duration-300 hover:bg-almost-white hover:text-ink min-[500px]:h-[45px]"
           >
             Contact
           </a>
