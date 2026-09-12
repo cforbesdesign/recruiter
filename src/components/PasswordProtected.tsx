@@ -3,9 +3,9 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { unlock } from "../hooks/useUnlock";
 // import { NoiseBackground } from "./NoiseBackground"; // disabled for now, may bring back later
-import logoMark from "../assets/icons/logo.svg";
-import lockGlyph from "../assets/icons/lock-glyph.svg";
-import arrowRight from "../assets/icons/arrow-right.svg";
+// import logoMark from "../assets/icons/logo.svg"; // logo + lock badge disabled for now, may bring back later
+// import lockGlyph from "../assets/icons/lock-glyph.svg";
+// import arrowRight from "../assets/icons/arrow-right.svg"; // in-field arrow button replaced with a full-width Submit button below
 
 const PASSWORD = "let-me-in";
 
@@ -67,6 +67,7 @@ export function PasswordProtected() {
       </button>
       */}
 
+      {/* Logo + lock badge commented out for now, may bring back later.
       <div className="relative hidden xs:flex">
         <div className="size-12 shrink-0">
           <img src={logoMark} alt="" className="size-full" />
@@ -75,16 +76,17 @@ export function PasswordProtected() {
           <img src={lockGlyph} alt="" className="h-[16px] w-[12.8px]" />
         </div>
       </div>
+      */}
 
-      <div className="relative flex flex-col items-center gap-4">
-        <h1 className="text-[45px] leading-[1.05] text-ink">
+      <div className="relative flex flex-col items-center gap-2">
+        <h1 className="text-[30px] font-semibold leading-[1.05] text-ink">
           This content is protected
         </h1>
-        <p className="text-[20px] text-ink">To view, please enter the password</p>
+        <p className="text-[16px] text-ink">To view, please enter the password</p>
       </div>
 
       <form onSubmit={onSubmit} className="relative flex flex-col items-center gap-3">
-        <div className="flex h-[48px] w-[319px] items-center overflow-hidden rounded-[4px] border-2 border-ink">
+        <div className="relative">
           <input
             type="password"
             value={value}
@@ -96,16 +98,20 @@ export function PasswordProtected() {
             autoFocus
             aria-invalid={error}
             aria-label="Password"
-            className="h-full flex-1 bg-transparent px-4 text-[20px] text-ink outline-none placeholder:text-[#4e4e4e]"
+            className="h-[48px] w-[219px] rounded-[9.6px] border-2 border-[#a3a3a3] bg-transparent px-4 text-left font-mono text-[20px] tracking-tight text-ink caret-transparent outline-none placeholder:text-[16px] placeholder:text-[#b3b3b3]"
           />
-          <button
-            type="submit"
-            aria-label="Submit password"
-            className="flex h-full w-16 shrink-0 items-center justify-center transition-colors hover:bg-ink/5"
-          >
-            <img src={arrowRight} alt="" className="h-5 w-[26.667px]" />
-          </button>
+          {!value && (
+            <span className="animate-blink pointer-events-none absolute top-1/2 left-4 h-[22px] w-[2px] -translate-y-1/2 bg-accent" />
+          )}
         </div>
+        <button
+          type="submit"
+          disabled={!value}
+          aria-label="Submit password"
+          className="h-[48px] w-[219px] rounded-[9.6px] bg-ink text-[20px] font-medium text-almost-white transition-colors hover:bg-ink/90 disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          Submit
+        </button>
         {error && (
           <p className="text-[14px] text-accent">
             That password isn&rsquo;t right. Try again.
