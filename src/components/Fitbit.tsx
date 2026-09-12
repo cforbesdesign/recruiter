@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { handleNavClick } from "../hooks/useRoute";
+import { useInView } from "../hooks/useInView";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
 import { HighlightsCarousel } from "./HighlightsCarousel";
@@ -30,7 +31,12 @@ import fitbitFbAd5 from "../assets/images/work/fitbit-fb-ad-5.gif";
 import googleImage from "../assets/images/selected-projects/google.png";
 import baltimoreMagazineImage from "../assets/images/selected-projects/baltimore-magazine.png";
 
-const linkClass = "underline decoration-1 underline-offset-2 hover:text-accent";
+const linkClass = "underline decoration-1 underline-offset-2 transition-colors duration-300 hover:text-accent";
+
+const reveal = (inView: boolean) =>
+  `transition-all duration-700 ease-out ${
+    inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`;
 
 const fbAdSlides: HighlightSlide[] = [
   { image: fitbitFbAd1, alt: "Facebook link ad animation for a holiday gift sale" },
@@ -41,8 +47,9 @@ const fbAdSlides: HighlightSlide[] = [
 ];
 
 function SectionIntro({ heading, body }: { heading: string; body: string }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div className="flex flex-col gap-6 md:flex-row md:gap-12">
+    <div ref={ref} className={`flex flex-col gap-6 md:flex-row md:gap-12 ${reveal(inView)}`}>
       <h3 className="flex-1 text-[20px] font-semibold leading-[1.05] text-ink md:text-[30px]">
         {heading}
       </h3>

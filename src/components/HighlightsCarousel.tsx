@@ -188,7 +188,7 @@ export function HighlightsCarousel({
           aria-label={playing ? "Pause highlights" : "Play highlights"}
           aria-pressed={!playing}
           style={PILL_STYLE}
-          className="flex size-12 shrink-0 items-center justify-center rounded-full text-ink"
+          className="flex size-12 shrink-0 items-center justify-center rounded-full text-ink transition-[filter] duration-300 hover:brightness-95"
         >
           {playing ? (
             <span className="flex gap-1">

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { handleNavClick } from "../hooks/useRoute";
+import { useInView } from "../hooks/useInView";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
 import { ProjectImage, ProjectVideo } from "./ProjectSection";
@@ -48,9 +49,15 @@ const PRODUCT_FEATURES_BODY =
 const MICROSITE_BODY =
   "A second deliverable translated the product into a story an enterprise buyer could understand without touching the UI: a marketing microsite positioning Spark as an enterprise search and assistant powered by Gemini, built around grounded results, zero-code AI, organizational knowledge graphs, and over a hundred connectors. We also explored how the same system could adapt beyond Google entirely, proof that Spark's intelligence doesn't have to look like the company that built it.";
 
+const reveal = (inView: boolean) =>
+  `transition-all duration-700 ease-out ${
+    inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`;
+
 function SectionIntro({ heading, body }: { heading: string; body: string }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div className="flex flex-col gap-6 md:flex-row md:gap-12">
+    <div ref={ref} className={`flex flex-col gap-6 md:flex-row md:gap-12 ${reveal(inView)}`}>
       <h3 className="flex-1 text-[20px] font-semibold leading-[1.05] text-ink md:text-[30px]">
         {heading}
       </h3>
@@ -63,7 +70,7 @@ function PlaceholderShot({ image, caption }: { image: string; caption: string })
   return (
     <figure>
       <ProjectImage image={image} alt={caption} aspect="1920/1080" />
-      <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">{caption}</figcaption>
+      <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555]">{caption}</figcaption>
     </figure>
   );
 }
@@ -147,7 +154,7 @@ export function GoogleAgenticAssistant() {
                   <img src={moodboardGpt} alt="" className="h-full w-full object-cover" />
                 </div>
               </div>
-              <p className="font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
+              <p className="font-mono text-[14px] leading-[normal] tracking-tight text-[#555555]">
                 We spent a lot of time looking at the current project
                 management, collaboration and AI tools to see where Spark
                 could bring true innovation.
@@ -212,7 +219,7 @@ export function GoogleAgenticAssistant() {
                       alt="Connector data"
                       className="h-auto w-full rounded-2xl"
                     />
-                    <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
+                    <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555]">
                       Connector data
                     </figcaption>
                   </figure>
@@ -223,7 +230,7 @@ export function GoogleAgenticAssistant() {
                       alt="Intelligent UI customization"
                       className="h-auto w-full rounded-2xl"
                     />
-                    <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
+                    <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555]">
                       Intelligent UI customization
                     </figcaption>
                   </figure>

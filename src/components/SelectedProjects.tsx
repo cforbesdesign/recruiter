@@ -66,13 +66,13 @@ function ProjectCard({
   column: number;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const { ref: textRef, inView: textInView } = useInView<HTMLParagraphElement>();
+  const delayClass = DELAY_CLASSES[column % DELAY_CLASSES.length];
   const card = (
     <>
       <div
         ref={ref}
-        className={`aspect-[623/419] w-full overflow-hidden rounded-3xl ${reveal(inView)} ${
-          DELAY_CLASSES[column % DELAY_CLASSES.length]
-        }`}
+        className={`aspect-[623/419] w-full overflow-hidden rounded-3xl ${reveal(inView)} ${delayClass}`}
       >
         <div
           role="img"
@@ -81,7 +81,10 @@ function ProjectCard({
           className="h-full w-full bg-cover bg-center transition-transform duration-300 ease-out group-hover:scale-105"
         />
       </div>
-      <p className="mt-6 text-[20px] font-medium leading-[1.31] text-ink transition-opacity duration-300 ease-out group-hover:opacity-75 md:font-normal">
+      <p
+        ref={textRef}
+        className={`mt-6 text-[20px] font-medium leading-[1.31] text-ink transition-opacity duration-300 ease-out group-hover:opacity-75 md:font-normal ${reveal(textInView)} ${delayClass}`}
+      >
         <span className="font-bold">
           {/* {project.number} */}
           {project.name}
@@ -111,11 +114,15 @@ function ProjectCard({
 
 export function SelectedProjects() {
   let columnIndex = 0;
+  const { ref: headingRef, inView: headingInView } = useInView<HTMLDivElement>();
 
   return (
     <section className="bg-almost-white">
       <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-        <div className="flex flex-col gap-[27px] py-12 md:pt-0 md:pb-[136px]">
+        <div
+          ref={headingRef}
+          className={`flex flex-col gap-[27px] py-12 md:pt-0 md:pb-[136px] ${reveal(headingInView)}`}
+        >
           <h2 className="text-[30px] font-semibold leading-[1.05] text-ink">
             Selected Projects
           </h2>

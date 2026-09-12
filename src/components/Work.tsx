@@ -5,6 +5,7 @@ import {
   ProjectNote,
   ProjectVideo,
 } from "./ProjectSection";
+import { useInView } from "../hooks/useInView";
 import fitbitHero from "../assets/images/work/fitbit-hero.png";
 import fitbitHeroVideo from "../assets/videos/work/fitbit-hero.mp4";
 import fitbitHomepage from "../assets/images/work/fitbit-homepage.png";
@@ -40,13 +41,24 @@ import xfinityRefresh from "../assets/images/work/xfinity-refresh.jpg";
 import googleorgDashboard from "../assets/images/work/googleorg-dashboard.gif";
 import googleorgWorkspace from "../assets/images/work/googleorg-workspace.jpg";
 
-const linkClass = "underline decoration-1 underline-offset-2 hover:text-accent";
+const linkClass = "underline decoration-1 underline-offset-2 transition-colors duration-300 hover:text-accent";
+
+const reveal = (inView: boolean) =>
+  `transition-all duration-700 ease-out ${
+    inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`;
 
 export function Work() {
+  const { ref: headingRef, inView: headingInView } = useInView<HTMLDivElement>();
+  const { ref: googleOrgRef, inView: googleOrgInView } = useInView<HTMLDivElement>();
+
   return (
     <section id="work" className="scroll-mt-20 bg-almost-white">
       <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-        <div className="flex flex-col gap-[27px] py-12 md:pt-0 md:pb-[136px]">
+        <div
+          ref={headingRef}
+          className={`flex flex-col gap-[27px] py-12 md:pt-0 md:pb-[136px] ${reveal(headingInView)}`}
+        >
           <h2 className="text-[30px] leading-[1.05] text-ink sm:text-[45px]">
             Featured Work
           </h2>
@@ -262,7 +274,10 @@ export function Work() {
 
           <div className="h-px w-full bg-ink" />
 
-          <div className="flex flex-col gap-6 md:flex-row md:gap-12">
+          <div
+            ref={googleOrgRef}
+            className={`flex flex-col gap-6 md:flex-row md:gap-12 ${reveal(googleOrgInView)}`}
+          >
             <h3 className="flex-1 text-[30px] leading-[1.05] text-ink md:text-[48px]">
               Google.org
             </h3>

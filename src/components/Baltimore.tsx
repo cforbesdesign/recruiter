@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { handleNavClick } from "../hooks/useRoute";
+import { useInView } from "../hooks/useInView";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
 import {
@@ -53,9 +54,15 @@ const bmagCarouselSlides: HighlightSlide[] = [
   },
 ];
 
+const reveal = (inView: boolean) =>
+  `transition-all duration-700 ease-out ${
+    inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`;
+
 function SectionIntro({ heading, body }: { heading: string; body: ReactNode }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
   return (
-    <div className="flex flex-col gap-6 md:flex-row md:gap-12">
+    <div ref={ref} className={`flex flex-col gap-6 md:flex-row md:gap-12 ${reveal(inView)}`}>
       <h3 className="flex-1 text-[20px] font-semibold leading-[1.05] text-ink md:text-[30px]">
         {heading}
       </h3>
@@ -87,7 +94,7 @@ export function Baltimore() {
                     href="https://www.baltimoremagazine.com/"
                     target="_blank"
                     rel="noreferrer"
-                    className="underline decoration-1 underline-offset-2 hover:text-accent"
+                    className="underline decoration-1 underline-offset-2 transition-colors duration-300 hover:text-accent"
                   >
                     Baltimore Magazine
                   </a>

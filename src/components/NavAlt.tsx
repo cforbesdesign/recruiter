@@ -11,7 +11,7 @@ function LogoIcon() {
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="block size-10 xs:size-12"
+      className="block size-10"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -128,7 +128,7 @@ export function NavAlt() {
                   fontWeight: 500,
                   letterSpacing: "0.2px",
                   textDecoration: "none",
-                  height: 48,
+                  height: 40,
                   padding: "0 24px",
                   display: "inline-flex",
                   alignItems: "center",
@@ -145,7 +145,7 @@ export function NavAlt() {
                   fontWeight: 500,
                   letterSpacing: "0.2px",
                   textDecoration: "none",
-                  height: 48,
+                  height: 40,
                   padding: "0 24px",
                   display: "inline-flex",
                   alignItems: "center",
@@ -182,7 +182,7 @@ export function NavAlt() {
               style={{
                 fontFamily: '"neue-haas-grotesk-display", sans-serif',
                 borderRadius: 9999,
-                padding: "12px 0",
+                padding: "8px 0",
                 fontSize: 16,
                 fontWeight: 500,
                 letterSpacing: "0.2px",
@@ -195,7 +195,7 @@ export function NavAlt() {
               style={{
                 fontFamily: '"neue-haas-grotesk-display", sans-serif',
                 borderRadius: 9999,
-                padding: "12px 0",
+                padding: "8px 0",
                 fontSize: 16,
                 fontWeight: 500,
                 letterSpacing: "0.2px",

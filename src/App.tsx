@@ -2,7 +2,6 @@ import { useState, useLayoutEffect } from "react";
 import type { ReactNode } from "react";
 import { Nav } from "./components/Nav";
 import { NavAlt } from "./components/NavAlt";
-import { Contact } from "./components/Contact";
 import { Everything } from "./components/Everything";
 import { Home } from "./components/Home";
 import { GoogleAgenticAssistant } from "./components/GoogleAgenticAssistant";
@@ -17,8 +16,6 @@ const PROTECTED_PATHS = ["/work/google-agentic-assistant", "/work/fitbit"];
 
 function page(path: string) {
   switch (path) {
-    case "/contact":
-      return <Contact />;
     case "/work/google-agentic-assistant":
       return <GoogleAgenticAssistant />;
     case "/work/google-agentic-assistant-alt":

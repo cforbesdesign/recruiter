@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
 import { HighlightsCarousel } from "./HighlightsCarousel";
+import { useInView } from "../hooks/useInView";
 import heroVideo from "../assets/videos/work/google-spark-hero.mp4";
 import heroPoster from "../assets/images/work/google-spark-hero-poster.jpg";
 import placeholder2 from "../assets/images/work/carousel-placeholders/placeholder-2.svg";
@@ -44,8 +45,16 @@ const slides = [
   },
 ];
 
+const reveal = (inView: boolean) =>
+  `transition-all duration-700 ease-out ${
+    inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`;
+
 /** WIP staging page — prototyping the highlights carousel mid-flow before it's finalized in Figma. */
 export function GoogleAgenticAssistantAlt() {
+  const { ref: introRef, inView: introInView } = useInView<HTMLDivElement>();
+  const { ref: closingRef, inView: closingInView } = useInView<HTMLParagraphElement>();
+
   useEffect(() => {
     document.title = "Google Agentic Enterprise Assistant (Alt) — Craig Forbes";
   }, []);
@@ -59,7 +68,7 @@ export function GoogleAgenticAssistantAlt() {
 
       <section className="bg-almost-white py-16 md:py-26">
         <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-          <div className="flex flex-col gap-6 md:flex-row md:gap-12">
+          <div ref={introRef} className={`flex flex-col gap-6 md:flex-row md:gap-12 ${reveal(introInView)}`}>
             <h3 className="flex-1 text-[30px] leading-[1.05] font-semibold text-ink md:text-[48px]">
               Employee Search Query
             </h3>
@@ -87,7 +96,10 @@ export function GoogleAgenticAssistantAlt() {
 
       <section className="bg-almost-white pb-16 md:pb-26">
         <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-          <p className="text-[16px] leading-[1.31] text-ink md:text-[20px] xl:max-w-[calc(50%-24px)]">
+          <p
+            ref={closingRef}
+            className={`text-[16px] leading-[1.31] text-ink md:text-[20px] xl:max-w-[calc(50%-24px)] ${reveal(closingInView)}`}
+          >
             Every card in the feed carries its own source, timestamp, and
             quick actions, so the assistant reads as a single home base for
             the tools employees already use, not a new one to learn.

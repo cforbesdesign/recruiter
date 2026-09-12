@@ -19,6 +19,7 @@ type ProjectSectionProps = {
 /** Project intro: full-width hero image (or video), then project name beside headline + body. */
 export function ProjectSection({ image, video, alt, name, headline, body }: ProjectSectionProps) {
   const { ref, inView } = useInView<HTMLDivElement>();
+  const { ref: textRef, inView: textInView } = useInView<HTMLDivElement>();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export function ProjectSection({ image, video, alt, name, headline, body }: Proj
         )}
       </div>
 
-      <div className="flex flex-col gap-6 md:flex-row md:gap-12">
+      <div ref={textRef} className={`flex flex-col gap-6 md:flex-row md:gap-12 ${reveal(textInView)}`}>
         <h3 className="flex-1 text-[30px] leading-[1.05] text-ink md:text-[48px]">
           {name}
         </h3>
@@ -127,7 +128,7 @@ export function ProjectVideo({
         />
       </div>
       {caption && (
-        <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
+        <figcaption className="mt-4 font-mono text-[14px] leading-[normal] tracking-tight text-[#555555]">
           {caption}
         </figcaption>
       )}
@@ -175,8 +176,10 @@ export function ProjectNote({
   heading: string;
   children: ReactNode;
 }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className="md:w-1/2">
+    <div ref={ref} className={`md:w-1/2 ${reveal(inView)}`}>
       <p className="text-[20px] font-semibold leading-[1.15] text-ink md:text-[30px]">{heading}</p>
       <p className="mt-6 text-[16px] font-medium leading-[1.31] text-ink md:text-[20px] md:font-normal">
         {children}
@@ -237,7 +240,7 @@ function RowMedia({ img }: { img: RowImageItem }) {
         )}
       </div>
       {img.caption && (
-        <figcaption className="mt-4 text-center font-mono text-[14px] font-bold leading-[normal] tracking-tight text-[#555555] sm:leading-[1.5]">
+        <figcaption className="mt-4 text-center font-mono text-[14px] font-bold leading-[normal] tracking-tight text-[#555555]">
           {img.caption}
         </figcaption>
       )}

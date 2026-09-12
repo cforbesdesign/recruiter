@@ -1,9 +1,18 @@
+import { useInView } from "../hooks/useInView";
+
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/craig-forbes-8769331b" },
   { label: "Behance", href: "https://www.behance.net/cforbesdesc5fc" },
 ];
 
+const reveal = (inView: boolean) =>
+  `transition-all duration-700 ease-out ${
+    inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`;
+
 export function Footer() {
+  const { ref, inView } = useInView<HTMLParagraphElement>();
+
   return (
     <footer className="bg-ink">
       <div className="mx-auto flex max-w-[1512px] flex-col gap-20 px-6 pt-25 pb-20 min-[500px]:px-20">
@@ -23,7 +32,10 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="text-[45px] leading-[1.05] text-almost-white min-[500px]:max-w-[825px] min-[500px]:text-[48px] min-[1200px]:max-w-[66.667%] min-[1200px]:text-[56px]">
+        <p
+          ref={ref}
+          className={`text-[45px] leading-[1.05] text-almost-white min-[500px]:max-w-[825px] min-[500px]:text-[48px] min-[1200px]:max-w-[66.667%] min-[1200px]:text-[56px] ${reveal(inView)}`}
+        >
           Got a mission that needs a co-pilot? Let&rsquo;s chart the next course
           together.
         </p>
@@ -31,7 +43,7 @@ export function Footer() {
         <div className="flex flex-wrap items-start gap-5 min-[500px]:flex-nowrap min-[500px]:items-center">
           <a
             href="mailto:cforbesdesign@gmail.com"
-            className="flex h-12 shrink-0 items-center justify-center rounded-full border-[1.5px] border-almost-white bg-ink px-6 text-[16px] font-medium text-almost-white transition-colors duration-300 hover:bg-almost-white hover:text-ink min-[500px]:h-[45px]"
+            className="flex h-10 shrink-0 items-center justify-center rounded-full border-[1.5px] border-almost-white bg-ink px-6 text-[16px] font-medium text-almost-white transition-colors duration-300 hover:bg-almost-white hover:text-ink"
           >
             Contact
           </a>

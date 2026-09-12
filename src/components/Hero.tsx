@@ -2,6 +2,11 @@ import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { useInView } from "../hooks/useInView";
 
+const reveal = (inView: boolean) =>
+  `transition-all duration-700 ease-out ${
+    inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+  }`;
+
 type HeroProps = {
   /** Autoplaying video; when omitted, `poster` renders as a static image instead. */
   video?: string;
@@ -15,6 +20,7 @@ type HeroProps = {
 
 export function Hero({ video, poster, alt = "", frameColor, lowered, children }: HeroProps) {
   const { ref: videoRef, inView } = useInView<HTMLVideoElement>();
+  const { ref: textRef, inView: textInView } = useInView<HTMLSpanElement>();
 
   useEffect(() => {
     if (inView && video) videoRef.current?.play();
@@ -28,11 +34,13 @@ export function Hero({ video, poster, alt = "", frameColor, lowered, children }:
     >
       <div className="relative mx-auto w-full grid grid-cols-1 gap-x-12 gap-y-10 px-6 pt-32 pb-12 xs:grid-cols-5 xs:px-12 xs:py-16 md:grid-cols-2 md:px-20 lg:py-26 xl:max-w-[1512px] xl:py-26">
         <p className="order-1 z-10 static text-pretty text-[45px] font-medium leading-[1.05] text-ink xs:absolute xs:left-12 xs:right-[284px] xs:top-1/2 xs:-translate-y-1/2 xs:text-[20px] sm:right-[calc(41.67%+11.75px)] sm:text-[30px] md:left-20 md:right-[calc(50%+23.5px)] lg:right-[calc(33.33%+84.33px)] lg:text-[56px] xl:right-[calc(33.33%+84px)] xl:text-[69px]">
-          {children}
+          <span ref={textRef} className={`block ${reveal(textInView)}`}>
+            {children}
+          </span>
         </p>
 
         <div
-          className="relative order-2 aspect-square w-full overflow-hidden rounded-2xl xs:order-none xs:col-span-2 xs:col-start-4 md:col-span-1 md:col-start-2"
+          className="relative order-2 aspect-square w-full overflow-hidden rounded-[32px] xs:order-none xs:col-span-2 xs:col-start-4 md:col-span-1 md:col-start-2"
           style={frameColor ? { boxShadow: `inset 0 0 0 2px ${frameColor}` } : undefined}
         >
           {video ? (
