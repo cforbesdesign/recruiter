@@ -7,7 +7,7 @@ import { unlock } from "../hooks/useUnlock";
 // import lockGlyph from "../assets/icons/lock-glyph.svg";
 // import arrowRight from "../assets/icons/arrow-right.svg"; // in-field arrow button replaced with a full-width Submit button below
 
-const PASSWORD = "let-me-in";
+const VALID_PASSWORDS = ["let-me-in", "PurpleRockScissors2026"];
 
 export function PasswordProtected() {
   const [value, setValue] = useState("");
@@ -33,7 +33,7 @@ export function PasswordProtected() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (value === PASSWORD) {
+    if (VALID_PASSWORDS.includes(value)) {
       unlock();
     } else {
       setError(true);

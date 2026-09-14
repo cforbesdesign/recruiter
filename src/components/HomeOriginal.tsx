@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { Hero } from "./Hero";
-import { SelectedProjects } from "./SelectedProjects";
+import { SelectedProjectsOriginal } from "./SelectedProjectsOriginal";
 import { About } from "./About";
 import { Footer } from "./Footer";
 import heroAstronautVideo from "../assets/videos/hero-astronaut.mp4";
 import heroAstronautPoster from "../assets/images/home-hero-poster.jpg";
 
-export function Home() {
+export function HomeOriginal() {
   useEffect(() => {
-    document.title = "Craig Forbes — Design Lead";
+    document.title = "Craig Forbes — Design Lead (Original)";
   }, []);
 
   return (
@@ -18,7 +18,7 @@ export function Home() {
         Coast-based Design Lead passionate about crafting stellar brands and
         products
       </Hero>
-      <SelectedProjects />
+      <SelectedProjectsOriginal />
       <About />
       <Footer />
     </>

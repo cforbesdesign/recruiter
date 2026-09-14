@@ -4,6 +4,7 @@ import { Nav } from "./components/Nav";
 import { NavAlt } from "./components/NavAlt";
 import { Everything } from "./components/Everything";
 import { Home } from "./components/Home";
+import { HomeOriginal } from "./components/HomeOriginal";
 import { GoogleAgenticAssistant } from "./components/GoogleAgenticAssistant";
 import { GoogleAgenticAssistantAlt } from "./components/GoogleAgenticAssistantAlt";
 import { Fitbit } from "./components/Fitbit";
@@ -26,6 +27,8 @@ function page(path: string) {
       return <Baltimore />;
     case "/everything.html":
       return <Everything />;
+    case "/home-original":
+      return <HomeOriginal />;
     default:
       return <Home />;
   }
