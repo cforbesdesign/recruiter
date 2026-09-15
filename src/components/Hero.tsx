@@ -15,10 +15,20 @@ type HeroProps = {
   frameColor?: string;
   /** Skips the -24px top offset, sitting 24px lower than the default. */
   lowered?: boolean;
+  /** Corner radius class for the image/video frame. Defaults to the site-wide hero treatment. */
+  imageRadius?: string;
   children: ReactNode;
 };
 
-export function Hero({ video, poster, alt = "", frameColor, lowered, children }: HeroProps) {
+export function Hero({
+  video,
+  poster,
+  alt = "",
+  frameColor,
+  lowered,
+  imageRadius = "rounded-[32px]",
+  children,
+}: HeroProps) {
   const { ref: videoRef, inView } = useInView<HTMLVideoElement>();
   const { ref: textRef, inView: textInView } = useInView<HTMLSpanElement>();
 
@@ -40,7 +50,7 @@ export function Hero({ video, poster, alt = "", frameColor, lowered, children }:
         </p>
 
         <div
-          className="relative order-2 aspect-square w-full overflow-hidden rounded-[32px] xs:order-none xs:col-span-2 xs:col-start-4 md:col-span-1 md:col-start-2"
+          className={`relative order-2 aspect-square w-full overflow-hidden ${imageRadius} xs:order-none xs:col-span-2 xs:col-start-4 md:col-span-1 md:col-start-2`}
           style={frameColor ? { boxShadow: `inset 0 0 0 2px ${frameColor}` } : undefined}
         >
           {video ? (

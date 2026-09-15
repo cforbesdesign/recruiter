@@ -50,7 +50,7 @@ export function About() {
         <div className="flex flex-col gap-12 py-12 md:grid md:grid-cols-12 md:gap-x-12 md:py-26">
           <div
             ref={ref}
-            className={`aspect-[699.5/487.82] w-full overflow-hidden rounded-lg md:col-span-6 md:col-start-1 xl:col-start-2 ${reveal(inView)}`}
+            className={`aspect-[699.5/487.82] w-full overflow-hidden rounded-3xl md:col-span-6 md:col-start-1 xl:col-start-2 ${reveal(inView)}`}
           >
             <img src={aboutPhoto} alt="Portrait" className="h-full w-full object-cover" />
           </div>

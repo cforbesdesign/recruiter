@@ -13,7 +13,12 @@ export function Home() {
 
   return (
     <>
-      <Hero video={heroAstronautVideo} poster={heroAstronautPoster} lowered>
+      <Hero
+        video={heroAstronautVideo}
+        poster={heroAstronautPoster}
+        imageRadius="rounded-3xl"
+        lowered
+      >
         <span className="text-accent">Craig Forbes</span> is an East
         Coast-based Design Lead passionate about crafting stellar brands and
         products

@@ -4,6 +4,7 @@ import baltimoreMagazineImage from "../assets/images/selected-projects/baltimore
 import voteGovImage from "../assets/images/selected-projects/vote-gov-hero.jpg";
 import designEyeImage from "../assets/images/selected-projects/designeye.jpg";
 import flameBroilerImage from "../assets/images/selected-projects/flame-broiler.jpg";
+import xfinityImage from "../assets/images/selected-projects/xfinity.jpg";
 
 export type Project = {
   name: string;
@@ -36,6 +37,13 @@ export const projects: Project[] = [
     image: flameBroilerImage,
     alt: "Flame Broiler meal bowls and sauce bottle on a table",
     href: "/work/flame-broiler",
+  },
+  {
+    name: "Xfinity",
+    description: "Evolving the design system and expanding product trade-ins",
+    image: xfinityImage,
+    alt: "Xfinity wordmark on a purple gradient background",
+    href: "/work/xfinity",
   },
   {
     name: "Baltimore Magazine",

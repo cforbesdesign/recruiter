@@ -12,6 +12,7 @@ import { Baltimore } from "./components/Baltimore";
 import { VoteGov } from "./components/VoteGov";
 import { DesignEye } from "./components/DesignEye";
 import { FlameBroiler } from "./components/FlameBroiler";
+import { Xfinity } from "./components/Xfinity";
 import { PasswordProtected } from "./components/PasswordProtected";
 import { useRoute } from "./hooks/useRoute";
 import { useUnlocked } from "./hooks/useUnlock";
@@ -21,6 +22,7 @@ const PROTECTED_PATHS = [
   "/work/google-agentic-assistant-alt",
   "/work/fitbit",
   "/work/flame-broiler",
+  "/work/xfinity",
 ];
 
 function page(path: string) {
@@ -39,6 +41,8 @@ function page(path: string) {
       return <DesignEye />;
     case "/work/flame-broiler":
       return <FlameBroiler />;
+    case "/work/xfinity":
+      return <Xfinity />;
     case "/everything.html":
       return <Everything />;
     case "/home-original":

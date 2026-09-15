@@ -91,3 +91,17 @@ body {
 .animate-blink {
   animation: blink 1s step-end infinite;
 }
+
+@keyframes handle-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-handle-breathe {
+  animation: handle-breathe 2.5s ease-in-out infinite;
+}
