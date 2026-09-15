@@ -41,7 +41,9 @@ export function UpNext({ current }: { current: string }) {
           Up next
         </h2>
         <div className="grid grid-cols-1 gap-x-12 gap-y-12 pb-12 sm:grid-cols-2 md:pb-26">
-          <ProjectCard project={prev} />
+          <div className="hidden sm:block">
+            <ProjectCard project={prev} />
+          </div>
           <ProjectCard project={next} />
         </div>
       </div>

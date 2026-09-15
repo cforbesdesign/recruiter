@@ -110,7 +110,7 @@ export function NavAlt() {
         transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
-      <nav className="mx-auto max-w-[1512px] px-6 py-6 sm:px-12 xl:px-20">
+      <nav className="mx-auto max-w-[1512px] px-6 py-6 sm:px-12 md:py-3 xl:px-20">
         {/* Top row — logo left, links/hamburger right. Never moves. */}
         <div className="flex items-center justify-between">
           <a id="nav-logo" href="/" onClick={handleNavClick("/")} className="flex items-center">

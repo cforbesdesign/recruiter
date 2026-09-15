@@ -7,7 +7,7 @@ import { unlock } from "../hooks/useUnlock";
 // import lockGlyph from "../assets/icons/lock-glyph.svg";
 // import arrowRight from "../assets/icons/arrow-right.svg"; // in-field arrow button replaced with a full-width Submit button below
 
-const VALID_PASSWORDS = ["let-me-in", "PurpleRockScissors2026"];
+const VALID_PASSWORDS = ["let-me-in", "PurpleRockScissors2026", "bighuman"];
 
 export function PasswordProtected() {
   const [value, setValue] = useState("");

@@ -3,6 +3,7 @@ import fitbitImage from "../assets/images/selected-projects/fitbit.png";
 import baltimoreMagazineImage from "../assets/images/selected-projects/baltimore-magazine.png";
 import voteGovImage from "../assets/images/selected-projects/vote-gov-hero.jpg";
 import designEyeImage from "../assets/images/selected-projects/designeye.jpg";
+import flameBroilerImage from "../assets/images/selected-projects/flame-broiler.jpg";
 
 export type Project = {
   name: string;
@@ -28,6 +29,13 @@ export const projects: Project[] = [
     image: fitbitImage,
     alt: "Fitbit Luxe introduction screen shown on a phone",
     href: "/work/fitbit",
+  },
+  {
+    name: "Flame Broiler",
+    description: "Designing the mobile ordering experience",
+    image: flameBroilerImage,
+    alt: "Flame Broiler meal bowls and sauce bottle on a table",
+    href: "/work/flame-broiler",
   },
   {
     name: "Baltimore Magazine",

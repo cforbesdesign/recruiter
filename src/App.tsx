@@ -11,11 +11,17 @@ import { Fitbit } from "./components/Fitbit";
 import { Baltimore } from "./components/Baltimore";
 import { VoteGov } from "./components/VoteGov";
 import { DesignEye } from "./components/DesignEye";
+import { FlameBroiler } from "./components/FlameBroiler";
 import { PasswordProtected } from "./components/PasswordProtected";
 import { useRoute } from "./hooks/useRoute";
 import { useUnlocked } from "./hooks/useUnlock";
 
-const PROTECTED_PATHS = ["/work/google-agentic-assistant", "/work/fitbit"];
+const PROTECTED_PATHS = [
+  "/work/google-agentic-assistant",
+  "/work/google-agentic-assistant-alt",
+  "/work/fitbit",
+  "/work/flame-broiler",
+];
 
 function page(path: string) {
   switch (path) {
@@ -31,6 +37,8 @@ function page(path: string) {
       return <VoteGov />;
     case "/work/design-eye":
       return <DesignEye />;
+    case "/work/flame-broiler":
+      return <FlameBroiler />;
     case "/everything.html":
       return <Everything />;
     case "/home-original":

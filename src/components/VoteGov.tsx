@@ -75,7 +75,7 @@ export function VoteGov() {
 
       <section className="bg-almost-white">
         <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-          <div className="flex flex-col gap-12 pb-12 md:gap-26 md:pb-26">
+          <div className="flex flex-col gap-6 pb-12 md:gap-26 md:pb-26">
             <SectionIntro
               heading="Overview"
               body={
@@ -90,7 +90,11 @@ export function VoteGov() {
                     Collaborating with UX researchers, developers, and
                     content strategists, we conducted user interviews
                     across demographics and worked with disability
-                    advocacy groups to ensure accessibility for all.
+                    advocacy groups to ensure accessibility for all. The
+                    clearest insight from that research: people on a
+                    federal website don&rsquo;t want to be wowed, they
+                    want to be done. Every decision favored clarity and
+                    speed over polish for its own sake.
                   </p>
                   <p>
                     We designed a &ldquo;TurboTax-like&rdquo; flow with
@@ -106,6 +110,16 @@ export function VoteGov() {
                     Deliverables included a refreshed brand identity,
                     USWDS based component system, high-contrast mode, and
                     a WCAG-compliant accessibility dock.
+                  </p>
+                  <p>
+                    The federal side also came with real design
+                    constraints, USWDS standards, plain-language rules,
+                    strict accessibility requirements, that can feel like
+                    aesthetic limits if you fight them. We designed around
+                    those constraints instead, and used the project to
+                    advocate for design&rsquo;s role as more than a
+                    &ldquo;coat of paint&rdquo; applied at the end: a
+                    discipline that shapes the system from the start.
                   </p>
                 </>
               }
@@ -127,7 +141,7 @@ export function VoteGov() {
 
       <section className="-mt-8 bg-almost-white md:-mt-16">
         <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-          <div className="flex flex-col gap-12 pb-12 md:gap-26 md:pb-26">
+          <div className="flex flex-col gap-6 pb-12 md:gap-26 md:pb-26">
             <ProjectImage
               image={voteGovLanguagesGif}
               alt="Vote.gov homepage cycling through several languages"

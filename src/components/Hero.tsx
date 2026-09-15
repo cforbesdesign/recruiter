@@ -33,7 +33,7 @@ export function Hero({ video, poster, alt = "", frameColor, lowered, children }:
       }`}
     >
       <div className="relative mx-auto w-full grid grid-cols-1 gap-x-12 gap-y-10 px-6 pt-32 pb-12 xs:grid-cols-5 xs:px-12 xs:py-16 md:grid-cols-2 md:px-20 lg:py-26 xl:max-w-[1512px] xl:py-26">
-        <p className="order-1 z-10 static text-pretty text-[45px] font-medium leading-[1.05] text-ink xs:absolute xs:left-12 xs:right-[284px] xs:top-1/2 xs:-translate-y-1/2 xs:text-[20px] sm:right-[calc(41.67%+11.75px)] sm:text-[30px] md:left-20 md:right-[calc(50%+23.5px)] lg:right-[calc(33.33%+84.33px)] lg:text-[56px] xl:right-[calc(33.33%+84px)] xl:text-[69px]">
+        <p className="order-1 z-10 static text-pretty text-[45px] font-medium leading-[1.05] text-ink xs:absolute xs:left-12 xs:right-[284px] xs:top-1/2 xs:-translate-y-1/2 xs:text-[20px] sm:right-[calc(41.67%+11.75px)] sm:text-[30px] md:left-20 md:right-[calc(50%+23.5px)] lg:text-[56px] xl:text-[69px]">
           <span ref={textRef} className={`block ${reveal(textInView)}`}>
             {children}
           </span>

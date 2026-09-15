@@ -23,13 +23,13 @@ function ProjectRow({ project, column }: { project: Project; column: number }) {
     <>
       <div
         ref={ref}
-        className={`aspect-[623/419] w-full overflow-hidden rounded-3xl sm:col-span-8 sm:col-start-5 sm:row-start-1 ${reveal(inView)} ${delayClass}`}
+        className={`group/image aspect-[623/419] w-full overflow-hidden rounded-3xl sm:col-span-8 sm:col-start-5 sm:row-start-1 ${reveal(inView)} ${delayClass}`}
       >
         <div
           role="img"
           aria-label={project.alt}
           style={{ backgroundImage: `url(${project.image})` }}
-          className="h-full w-full bg-cover bg-center transition-transform duration-300 ease-out group-hover:scale-105"
+          className="h-full w-full bg-cover bg-center transition-transform duration-300 ease-out group-hover/image:scale-105"
         />
       </div>
 
