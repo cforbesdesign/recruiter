@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { handleNavClick } from "../hooks/useRoute";
 import { useInView } from "../hooks/useInView";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
 import { ProjectImage, ProjectVideo } from "./ProjectSection";
+import { UpNext } from "./UpNext";
 import { HighlightsCarousel } from "./HighlightsCarousel";
 import type { HighlightSlide } from "./HighlightsCarousel";
 import heroVideo from "../assets/videos/work/google-spark-hero.mp4";
@@ -31,8 +31,6 @@ import uiCustomization from "../assets/images/work/google-spark-ui-customization
 import micrositeDesktop from "../assets/images/work/google-spark-microsite-desktop.jpg";
 import micrositeVideo from "../assets/videos/work/google-spark-microsite.mp4";
 import micrositeMobile from "../assets/images/work/google-spark-microsite-mobile.jpg";
-import baltimoreMagazineImage from "../assets/images/selected-projects/baltimore-magazine.png";
-import fitbitImage from "../assets/images/selected-projects/fitbit.png";
 
 const OVERVIEW_BODY =
   "Google approached Huge with an open brief: imagine what a Gemini-powered enterprise product could be, unconstrained by an existing feature set or technical roadmap. Rather than another AI chatbot layered onto existing tools, the opportunity was a bigger question: what would work look like if software understood the person using it, the organization around them, and the work happening across both? The result is Spark for enterprise, a concept spanning the employee home, enterprise search, agentic workflows, admin tools, personalization, and a companion marketing microsite.";
@@ -268,58 +266,7 @@ export function GoogleAgenticAssistant() {
         </div>
       </section>
 
-      <section className="bg-white pt-12 md:pt-26">
-        <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-          <h2 className="mb-12 text-[30px] font-semibold leading-[1.05] text-ink md:mb-26">
-            Up next
-          </h2>
-          <div className="grid grid-cols-1 gap-x-12 gap-y-12 pb-12 sm:grid-cols-2 md:pb-26">
-            <a
-              href="/work/baltimore-magazine"
-              onClick={handleNavClick("/work/baltimore-magazine")}
-              className="group flex flex-col gap-6"
-            >
-              <div className="aspect-[623/419] w-full overflow-hidden rounded-3xl border border-grey-1">
-                <img
-                  src={baltimoreMagazineImage}
-                  alt="Baltimore magazine website"
-                  className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[20px] font-medium text-ink md:font-normal">
-                  <span className="font-semibold text-accent">
-                    Baltimore Magazine
-                  </span>
-                  <br />
-                  Designing the go-to-guide for everything Baltimore
-                </p>
-              </div>
-            </a>
-
-            <a
-              href="/work/fitbit"
-              onClick={handleNavClick("/work/fitbit")}
-              className="group flex flex-col gap-6"
-            >
-              <div className="aspect-[623/419] w-full overflow-hidden rounded-3xl border border-grey-1">
-                <img
-                  src={fitbitImage}
-                  alt="Fitbit Luxe introduction screen shown on a phone"
-                  className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[20px] font-medium text-ink md:font-normal">
-                  <span className="font-semibold text-accent">Fitbit</span>
-                  <br />
-                  Crafting cohesive experiences for the fitness-forward brand
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
+      <UpNext current="/work/google-agentic-assistant" />
 
       <Footer />
     </>

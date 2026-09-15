@@ -9,6 +9,8 @@ import { GoogleAgenticAssistant } from "./components/GoogleAgenticAssistant";
 import { GoogleAgenticAssistantAlt } from "./components/GoogleAgenticAssistantAlt";
 import { Fitbit } from "./components/Fitbit";
 import { Baltimore } from "./components/Baltimore";
+import { VoteGov } from "./components/VoteGov";
+import { DesignEye } from "./components/DesignEye";
 import { PasswordProtected } from "./components/PasswordProtected";
 import { useRoute } from "./hooks/useRoute";
 import { useUnlocked } from "./hooks/useUnlock";
@@ -25,6 +27,10 @@ function page(path: string) {
       return <Fitbit />;
     case "/work/baltimore-magazine":
       return <Baltimore />;
+    case "/work/vote-gov":
+      return <VoteGov />;
+    case "/work/design-eye":
+      return <DesignEye />;
     case "/everything.html":
       return <Everything />;
     case "/home-original":

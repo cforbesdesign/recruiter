@@ -96,12 +96,18 @@ export function ProjectVideo({
   aspect = "1352/845",
   rounded = true,
   caption,
+  frameColor,
+  scale,
 }: {
   video: string;
   poster?: string;
   aspect?: string;
   rounded?: boolean;
   caption?: string;
+  /** Inset 4px border, e.g. to mask black letterboxing baked into the video. */
+  frameColor?: string;
+  /** Zoom factor (e.g. 1.06) to crop out letterboxing baked into the source video. */
+  scale?: number;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -115,7 +121,10 @@ export function ProjectVideo({
       <div
         ref={ref}
         className={`w-full overflow-hidden ${rounded ? "rounded-2xl" : ""} ${reveal(inView)}`}
-        style={{ aspectRatio: aspect }}
+        style={{
+          aspectRatio: aspect,
+          boxShadow: frameColor ? `inset 0 0 0 4px ${frameColor}` : undefined,
+        }}
       >
         <video
           ref={videoRef}
@@ -125,6 +134,7 @@ export function ProjectVideo({
           muted
           playsInline
           className="h-full w-full object-cover"
+          style={scale ? { transform: `scale(${scale})` } : undefined}
         />
       </div>
       {caption && (

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { handleNavClick } from "../hooks/useRoute";
 import { useInView } from "../hooks/useInView";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
@@ -10,6 +9,7 @@ import {
   ProjectImageRow,
   ProjectNote,
 } from "./ProjectSection";
+import { UpNext } from "./UpNext";
 import fitbitHero from "../assets/images/work/fitbit-hero.png";
 import fitbitHeroVideo from "../assets/videos/work/fitbit-hero.mp4";
 import fitbitMarquee from "../assets/images/work/fitbit-marquee.gif";
@@ -28,8 +28,6 @@ import fitbitFbAd2 from "../assets/images/work/fitbit-fb-ad-2.gif";
 import fitbitFbAd3 from "../assets/images/work/fitbit-fb-ad-3.gif";
 import fitbitFbAd4 from "../assets/images/work/fitbit-fb-ad-4.gif";
 import fitbitFbAd5 from "../assets/images/work/fitbit-fb-ad-5.gif";
-import googleImage from "../assets/images/selected-projects/google.png";
-import baltimoreMagazineImage from "../assets/images/selected-projects/baltimore-magazine.png";
 
 const linkClass = "underline decoration-1 underline-offset-2 transition-colors duration-300 hover:text-accent";
 
@@ -154,56 +152,7 @@ export function Fitbit() {
         </div>
       </section>
 
-      <section className="bg-white pt-12 md:pt-26">
-        <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-          <h2 className="mb-12 text-[30px] font-semibold leading-[1.05] text-ink md:mb-26">
-            Up next
-          </h2>
-          <div className="grid grid-cols-1 gap-x-12 gap-y-12 pb-12 sm:grid-cols-2 md:pb-26">
-            <a
-              href="/work/google-agentic-assistant"
-              onClick={handleNavClick("/work/google-agentic-assistant")}
-              className="group flex flex-col gap-6"
-            >
-              <div className="aspect-[623/419] w-full overflow-hidden rounded-3xl border border-grey-1">
-                <img
-                  src={googleImage}
-                  alt="Google logo on a blue-to-purple gradient background"
-                  className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[20px] font-medium text-ink md:font-normal">
-                  <span className="font-semibold text-accent">Google</span>
-                  <br />
-                  An agentic enterprise assistant powered by Google Gemini
-                </p>
-              </div>
-            </a>
-
-            <a
-              href="/work/baltimore-magazine"
-              onClick={handleNavClick("/work/baltimore-magazine")}
-              className="group flex flex-col gap-6"
-            >
-              <div className="aspect-[623/419] w-full overflow-hidden rounded-3xl border border-grey-1">
-                <img
-                  src={baltimoreMagazineImage}
-                  alt="Baltimore magazine website"
-                  className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[20px] font-medium text-ink md:font-normal">
-                  <span className="font-semibold text-accent">Baltimore Magazine</span>
-                  <br />
-                  Designing the go-to-guide for everything Baltimore
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
+      <UpNext current="/work/fitbit" />
 
       <Footer />
     </>

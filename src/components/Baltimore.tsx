@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import type { ReactNode } from "react";
-import { handleNavClick } from "../hooks/useRoute";
 import { useInView } from "../hooks/useInView";
 import { Hero } from "./Hero";
 import { Footer } from "./Footer";
@@ -11,6 +10,7 @@ import {
   ProjectNote,
   ProjectVideo,
 } from "./ProjectSection";
+import { UpNext } from "./UpNext";
 import { HighlightsCarousel } from "./HighlightsCarousel";
 import type { HighlightSlide } from "./HighlightsCarousel";
 import bmagHero from "../assets/images/work/bmag-hero.png";
@@ -23,8 +23,6 @@ import bmagFaultStarsVideo from "../assets/videos/work/bmag-fault-stars.mp4";
 import bmagShellgame from "../assets/images/work/bmag-shellgame.png";
 import bmagSeafoodApp from "../assets/images/work/bmag-seafood-app.png";
 import bmagSeafoodAppVideo from "../assets/videos/work/bmag-seafood-app.mp4";
-import fitbitImage from "../assets/images/selected-projects/fitbit.png";
-import googleImage from "../assets/images/selected-projects/google.png";
 import bmagCarousel1 from "../assets/images/work/bmag-carousel-1.jpg";
 import bmagCarousel2 from "../assets/images/work/bmag-carousel-2.jpg";
 import bmagCarousel3 from "../assets/images/work/bmag-carousel-3.jpg";
@@ -168,56 +166,7 @@ export function Baltimore() {
         </div>
       </section>
 
-      <section className="bg-white pt-12 md:pt-26">
-        <div className="mx-auto max-w-[1512px] px-6 sm:px-12 xl:px-20">
-          <h2 className="mb-12 text-[30px] font-semibold leading-[1.05] text-ink md:mb-26">
-            Up next
-          </h2>
-          <div className="grid grid-cols-1 gap-x-12 gap-y-12 pb-12 sm:grid-cols-2 md:pb-26">
-            <a
-              href="/work/fitbit"
-              onClick={handleNavClick("/work/fitbit")}
-              className="group flex flex-col gap-6"
-            >
-              <div className="aspect-[623/419] w-full overflow-hidden rounded-3xl border border-grey-1">
-                <img
-                  src={fitbitImage}
-                  alt="Fitbit Luxe introduction screen shown on a phone"
-                  className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[20px] font-medium text-ink md:font-normal">
-                  <span className="font-semibold text-accent">Fitbit</span>
-                  <br />
-                  Crafting cohesive experiences for the fitness-forward brand
-                </p>
-              </div>
-            </a>
-
-            <a
-              href="/work/google-agentic-assistant"
-              onClick={handleNavClick("/work/google-agentic-assistant")}
-              className="group flex flex-col gap-6"
-            >
-              <div className="aspect-[623/419] w-full overflow-hidden rounded-3xl border border-grey-1">
-                <img
-                  src={googleImage}
-                  alt="Google logo on a blue-to-purple gradient background"
-                  className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
-                <p className="text-[20px] font-medium text-ink md:font-normal">
-                  <span className="font-semibold text-accent">Google</span>
-                  <br />
-                  An agentic enterprise assistant powered by Google Gemini
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
+      <UpNext current="/work/baltimore-magazine" />
 
       <Footer />
     </>
