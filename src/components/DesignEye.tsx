@@ -6,7 +6,8 @@ import { Footer } from "./Footer";
 import { ProjectImageRow, ProjectEmbed } from "./ProjectSection";
 import { PeekSlider } from "./PeekSlider";
 import { UpNext } from "./UpNext";
-import designEyeHero from "../assets/images/work/designeye-hero.gif";
+import designEyeHeroVideo from "../assets/videos/work/designeye-hero.mp4";
+import designEyeHeroPoster from "../assets/images/work/designeye-hero-poster.jpg";
 // import designEyeSketches from "../assets/images/work/designeye-sketches.jpg"; // commented out with its row usage below, may bring back later
 import designEyeBeardedMan from "../assets/images/work/designeye-bearded-man.jpg";
 import designEyeAmorette from "../assets/videos/work/designeye-amorette.mp4";
@@ -44,7 +45,12 @@ export function DesignEye() {
 
   return (
     <>
-      <Hero poster={designEyeHero} alt="Phone mockup cycling through the DesignEye app" lowered>
+      <Hero
+        video={designEyeHeroVideo}
+        poster={designEyeHeroPoster}
+        alt="Phone mockup cycling through the DesignEye app"
+        lowered
+      >
         <span className="text-accent">DesignEye</span>: Converse. Claim.
         Create.
       </Hero>
