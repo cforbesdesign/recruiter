@@ -18,7 +18,7 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
       <div className="transition-opacity duration-300 ease-out group-hover:opacity-75">
         <p className="text-[20px] font-medium text-ink md:font-normal">
-          <span className="font-semibold text-accent">{project.name}</span>
+          <span className="font-semibold text-ink">{project.name}</span>
           <br />
           {project.description}
         </p>
